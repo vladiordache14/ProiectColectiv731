@@ -1,1 +1,11 @@
-<p>offers works!</p>
+<div>
+  <p>Offers Component Works!</p>
+  <ul>
+    <li *ngFor="let offer of offers">
+      <h3>{{ offer.name }}</h3>
+      <p>{{ offer.details }}</p>
+      <p>Price: ${{ offer.price }}</p>
+      <hr>
+    </li>
+  </ul>
+</div>
