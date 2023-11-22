@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable} from "rxjs";
+import {catchError, map, Observable, throwError} from "rxjs";
 import {Offer} from "../offer";
 
 @Injectable({
@@ -9,13 +9,17 @@ import {Offer} from "../offer";
 export class OffersService {
   constructor(private http: HttpClient) { }
 
-  // not working yet:
-  getAllOffers(): Observable<Offer[]> {
-    return this.http.get<Offer[]>("http://localhost:8080/offers/all").pipe(
-      map(offers => offers.sort((a, b) => a.name.localeCompare(b.name))),
-      catchError(error => {
+  getActiveOffers(): Observable<Offer[]> {
+    return this.http.get<Offer[]>("http://localhost:8080/offers/active").pipe(
+      map(offers => {
+        if (offers.length > 1) {
+          offers.sort((a, b) => a.name.localeCompare(b.name))
+        }
+        return offers;
+      }),
+      catchError((error: any, caught: Observable<Offer[]>) => {
         console.error('Error fetching offers:', error);
-        throw error;
+        return throwError(() => new Error('An error occurred'));
       })
     );
   }

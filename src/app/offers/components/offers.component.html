@@ -1,11 +1,31 @@
+<body>
 <div>
-  <p>Offers Component Works!</p>
-  <ul>
-    <li *ngFor="let offer of offers">
-      <h3>{{ offer.name }}</h3>
-      <p>{{ offer.details }}</p>
-      <p>Price: ${{ offer.price }}</p>
-      <hr>
-    </li>
-  </ul>
+  <div class="offers-container" *ngFor="let offer of offers">
+    <div class="offer-item">
+      <h2 class="offer-title"> {{ offer.name }}</h2>
+      <div class="offer-details">
+        <div *ngIf="offer.photos.length > 0" class="carousel-container">
+          <img *ngFor="let image of offer.photos;  let i=index"
+               [src]="offer.photos[i].photoUrl" [alt]="offer.photos[i].photoUrl"
+               [ngClass]="{'image-active': offer.selectedIndex === i}">
+          <div class="carousel-dot-container">
+    <span *ngFor="let dot of offer.photos; let i=index"
+          class="dot"
+          [ngClass]="{'active': offer.selectedIndex === i}"
+          (click)="selectImage(offer, i)">
+    </span>
+          </div>
+        </div>
+        <div class="offer-info">
+          <p class="offer-description"> {{ offer.description}} </p>
+          <p class="offer-seller-username"> {{ offer.seller.username}} </p>
+          <p class="offer-price"> {{ offer.price }} € </p>
+          <button class="buy-button"> Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<div>
+</div>
+</body>
