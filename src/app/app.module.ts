@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { OffersModule } from './offers/module/offers.module';
+import { AdvertsModule } from './offers/module/adverts.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, OffersModule
+    BrowserModule, AdvertsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

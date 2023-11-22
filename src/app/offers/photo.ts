@@ -1,9 +1,9 @@
 export class Photo {
-  id: number;
+  imageId: number;
   photoUrl: string;
 
-  constructor(id: number, url: string) {
-    this.id = id;
+  constructor(imageId: number, url: string) {
+    this.imageId = imageId;
     this.photoUrl = url;
   }
 }

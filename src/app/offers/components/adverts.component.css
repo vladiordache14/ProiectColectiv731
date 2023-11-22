@@ -10,13 +10,13 @@ body {
   color: #333333;
 }
 
-.offers-container {
+.adverts-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.offer-item {
+.advert-item {
   width: 100%;
   border: 1px solid #ccc;
   padding: 10px;
@@ -24,7 +24,7 @@ body {
   margin-bottom: 20px;
 }
 
-.offer-title {
+.advert-title {
   margin-top: 0;
   text-align: center;
   background: #cec1b4 linear-gradient(to bottom, #c5b8ab, #b6a79a);
@@ -34,45 +34,45 @@ body {
   font-size: 31px;
 }
 
-.offer-details {
+.advert-details {
   display: flex;
   align-items: center;
   position: relative;
 }
 
-.offer-photo {
+.advert-photo {
   flex: 0 0 30%;
 }
 
-.offer-photo img {
+.advert-photo img {
   max-width: 100%;
   height: auto;
 }
 
-.offer-info {
+.advert-info {
   flex: 1;
   text-align: center;
 }
 
-.offer-description, .offer-price {
+.advert-description, .advert-price {
   font-family: Muli, SansSerif, "Times New Roman", serif;
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.offer-description {
+.advert-description {
   margin-bottom: 10px;
   font-size: 25px;
   letter-spacing: 0.8px;
 }
 
-.offer-seller-username {
+.advert-seller-username {
   font-style: italic;
   color: #555;
   margin-bottom: 5px;
 }
 
-.offer-price {
+.advert-price {
   font-weight: bold;
   font-size: 31px;
   color: #3a2403;
