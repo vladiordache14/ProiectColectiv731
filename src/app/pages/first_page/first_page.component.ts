@@ -111,10 +111,11 @@ export class First_pageComponent {
   registerUser(){
     if(this.fieldsValid()) {
       const currentUser = new User(this.username, this.password, this.email, this.selectedRole.toString(), this.address, this.phone)
-      
+
       this.signupService.signup(currentUser, {responseType: 'text'}).subscribe(
         {
           next: (response: string) => {
+            this.messageService.add({severity: 'success', summary: response});
             console.log(response);
           },
           error: (error: any) => {
