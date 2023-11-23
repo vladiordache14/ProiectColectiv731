@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import {User} from "../../model/user";
+import {SignupService} from "../../service/signup.service";
 
 
 @Component({
@@ -10,13 +12,13 @@ import { MessageService } from 'primeng/api';
 export class First_pageComponent {
 
   displayDialog: boolean = false;
-  username: string | undefined;
-  password: string | undefined;
-  email: string | undefined;
-  selectedRole: string | undefined;
-  roleOptions: string[] = ['Seller', 'Buyer'];
-  address: string | undefined;
-  phone: string | undefined;
+  username: string="";
+  password: string="";
+  email: string="";
+  selectedRole: string="";
+  roleOptions: string[] = ['SELLER', 'BUYER'];
+  address: string="";
+  phone: string="";
   messages: any[] = []; // Array to store messages
 
   usernameInvalid: boolean = true;
@@ -26,12 +28,12 @@ export class First_pageComponent {
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private signupService: SignupService) {}
 
   checkUsername() {
     this.usernameInvalid = false;
 
-    if (!this.username) {
+    if (this.username.length==0) {
       this.usernameInvalid = true; // Username is mandatory
     } else if (this.username.length > 30) {
       this.usernameInvalid = true; // Max length is 30 characters
@@ -45,7 +47,7 @@ export class First_pageComponent {
     const lowercaseRegex = /[a-z]/;
     const digitRegex = /\d/;
 
-    if (!this.password || this.password.length > 30) {
+    if (this.password.length == 0 || this.password.length > 30) {
       this.passwordInvalid = true;
     }
     else if (!(uppercaseRegex.test(<string>this.password))){
@@ -63,7 +65,7 @@ export class First_pageComponent {
     this.emailInvalid = false;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/;
 
-    if (!this.email) {
+    if (this.email.length == 0) {
       this.emailInvalid = true;
     } else if(!(emailPattern.test(<string>this.email))){
       this.emailInvalid = true;
@@ -98,7 +100,6 @@ export class First_pageComponent {
   }
 
   createAccountPopup(){
-    console.log("Create account clicked!");
     this.displayDialog = true;
   }
 
@@ -108,16 +109,21 @@ export class First_pageComponent {
 
 
   registerUser(){
-    if(this.usernameExists(this.username)){
-      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Username already exists!' });
-
-    }else{
-      //backend create account
+    if(this.fieldsValid()) {
+      const currentUser = new User(this.username, this.password, this.email, this.selectedRole.toString(), this.address, this.phone)
+      
+      this.signupService.signup(currentUser, {responseType: 'text'}).subscribe(
+        {
+          next: (response: string) => {
+            console.log(response);
+          },
+          error: (error: any) => {
+            this.messageService.add({severity: 'error', summary: error.error});
+            console.error(error);
+          },
+        }
+      );
     }
-  }
-  usernameExists(username:any){
-    //some backend code check if username exists
-    return true;
   }
 
   fieldsValid(){

@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import {MessagesModule} from "primeng/messages";
 import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -33,7 +34,8 @@ import {PasswordModule} from "primeng/password";
     FormsModule,
     MessagesModule,
     ChipsModule,
-    PasswordModule
+    PasswordModule,
+    HttpClientModule
 
   ],
   providers: [MessageService],
