@@ -116,6 +116,18 @@ export class First_pageComponent {
         {
           next: (response: string) => {
             this.messageService.add({severity: 'success', summary: response});
+            this.username="";
+            this.usernameInvalid=true;
+            this.password="";
+            this.passwordInvalid=true;
+            this.email="";
+            this.emailInvalid = true;
+            this.selectedRole="";
+            this.roleInvalid = true;
+            this.address="";
+            this.addressInvalid = true;
+            this.phone="";
+            this.phoneInvalid=true;
             console.log(response);
           },
           error: (error: any) => {

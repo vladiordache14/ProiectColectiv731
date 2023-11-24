@@ -15,7 +15,7 @@
           <td><label for="username">*Username:</label></td>
           <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" (input)="checkUsername()" />
             <div *ngIf="usernameInvalid" class="error-message">
-              mandatory, max 30 characters
+              max 30 characters
             </div>
           </td>
         </div>
@@ -26,7 +26,7 @@
           <td><label for="password">*Password:</label></td>
           <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" (input)="checkPassword()" />
             <div *ngIf="passwordInvalid" class="error-message">
-              mandatory, min 1 Uppercase, min 1 Lowercase, min 1 number, max 30 characters
+              min 1 Uppercase, min 1 Lowercase, min 1 number, max 30 characters
             </div></td>
         </div>
       </tr>
@@ -36,7 +36,7 @@
           <td><label for="email">*Email:</label></td>
           <td><input type="email" id="email" [(ngModel)]="email" pInputText class="form-control" (input)="checkEmail()" />
             <div *ngIf="emailInvalid" class="error-message">
-              mandatory, required form: "@"+domain name+".com"
+              required form: "@"+domain name+".com"
             </div></td>
         </div>
       </tr>
