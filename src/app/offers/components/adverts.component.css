@@ -78,8 +78,7 @@ body {
   color: #3a2403;
   text-shadow: 1px 1px 2px rgba(38, 37, 37, 0.4);
 }
-
-.buy-button {
+.buy-button{
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -90,6 +89,32 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 22px;
+}
+
+.edit-button{
+  font-size:15px;
+  color:#3a2403;
+  position: absolute;
+  bottom: 70px;
+  right: 30px;
+  border:none;
+  background-color: #3a2403;
+  color: #eedbd6;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+.deactivate-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border:none;
+  cursor:pointer;
+  font-size:15px;
+  background-color: #3a2403;
+  color: #eedbd6;
+  border-radius: 5px;
 }
 
 .carousel-container {
