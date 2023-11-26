@@ -1,0 +1,12 @@
+.offerContainer{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;   
+    max-width: 500px; 
+}
+
+/* This is needed so that the md-button will not be showed on the page with all offers*/
+.unusable{
+    display: none;
+    pointer-events: none;
+}

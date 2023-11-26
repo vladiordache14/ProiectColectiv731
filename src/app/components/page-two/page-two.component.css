@@ -1,0 +1,11 @@
+.offerContainer{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+}
+/* Very important so that the md-buttons can actually show. Can be replaced or added to but not deleted */
+.usable{
+    display: block; 
+    pointer-events: all;
+}

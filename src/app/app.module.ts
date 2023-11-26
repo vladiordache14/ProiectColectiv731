@@ -7,13 +7,15 @@ import { AppRoutingModule } from './modules/app-routing.module';
 import { PageOneComponent } from './components/page-one/page-one.component';
 import { PageTwoComponent } from './components/page-two/page-two.component';
 import { ToggleService } from './services/toggle.service';
+import { ModifyAndDeactivateButtonsComponent } from './modify-and-deactivate-buttons/modify-and-deactivate-buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToggleButtonComponent, 
     PageOneComponent,
-    PageTwoComponent
+    PageTwoComponent,
+    ModifyAndDeactivateButtonsComponent
   ],
   imports: [
     BrowserModule, 

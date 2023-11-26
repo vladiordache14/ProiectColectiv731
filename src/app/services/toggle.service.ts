@@ -1,3 +1,5 @@
+//This service keeps track on which page we are at (All Offers ir My Offers) and can change the page
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -13,6 +15,5 @@ export class ToggleService {
 
   toggle() {
     this._isToggled.next(!this._isToggled.value);
-    console.log(this._isToggled.value);
   }
 }
