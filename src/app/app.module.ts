@@ -7,16 +7,13 @@ import { AdvertsModule } from './offers/module/adverts.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
 
   ],
   imports: [
     BrowserModule, AdvertsModule
   ],
   providers: [],
-  exports: [
-
-  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
