@@ -7,6 +7,7 @@ import {Advert} from "../advert";
   providedIn: 'root'
 })
 export class AdvertService {
+  private apiUrl = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
   getActiveAdverts(): Observable<Advert[]> {
@@ -22,5 +23,10 @@ export class AdvertService {
         return throwError(() => new Error('An error occurred'));
       })
     );
+  }
+
+  deactivateAdvert(advertId: number): Observable<void> {
+    const url = `${this.apiUrl}/adverts/${advertId}/deactivate`;
+    return this.http.post<void>(url, {});
   }
 }

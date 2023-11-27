@@ -115,6 +115,23 @@ body {
   background-color: #3a2403;
   color: #eedbd6;
   border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.deactivate-button:hover {
+  transform: scale(1.1);
+  color: red;
+  background-color: #f8f8f8;
+  border: 2px solid red;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.edit-button:hover {
+  transform: scale(1.1);
+  color: red;
+  background-color: #f8f8f8;
+  border: 2px solid red;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .carousel-container {

@@ -25,4 +25,25 @@ export class AdvertsComponent implements OnInit{
   selectImage(advert: Advert, index: number): void {
     advert.selectedIndex = index;
   }
+
+  loadAdverts(): void {
+    this.advertService.getActiveAdverts().subscribe(adverts => {
+      for (let advert of adverts) {
+        advert.selectedIndex = 0;
+      }
+      this.adverts = adverts;
+    });
+  }
+
+  deactivateAdvert(advert: Advert): void {
+    this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
+      console.log('Advert deactivated successfully.');
+
+      // Update local list to remove the deactivated advert
+      this.adverts = this.adverts.filter(a => a.advertId !== advert.advertId);
+
+      // Optionally, trigger a reload of active adverts
+      this.loadAdverts();
+    });
+  }
 }
