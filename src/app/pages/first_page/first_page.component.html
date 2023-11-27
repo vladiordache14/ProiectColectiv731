@@ -12,10 +12,7 @@
     <tr>
       <div class="form-group">
         <td><label for="username">*Username:</label></td>
-        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" (input)="checkUsername()" />
-          <div *ngIf="usernameInvalid" class="error-message">
-            max 30 characters
-          </div>
+        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" />
         </td>
       </div>
     </tr>
@@ -23,15 +20,13 @@
     <tr>
       <div class="form-group">
         <td><label for="password">*Password:</label></td>
-        <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" (input)="checkPassword()" />
-          <div *ngIf="passwordInvalid" class="error-message">
-            min 1 Uppercase, min 1 Lowercase, min 1 number, max 30 characters
-          </div></td>
+        <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" />
       </div>
     </tr>
   </table>
 
   <p-footer>
+    <button pButton type="button" label="Log in" (click)="logIn()" class="p-button-secondary"></button>
     <button pButton type="button" label="Cancel" (click)="hideDialog()" class="p-button-secondary"></button>
   </p-footer>
 

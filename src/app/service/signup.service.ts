@@ -8,12 +8,13 @@ import {User} from "../model/user";
 })
 export class SignupService {
 
-  private apiUrl = 'http://localhost:8080/users/signup'; // Update with your backend URL
+  private apiUrl = 'http://localhost:8080/authenticate/login'; // Update with your backend URL
 
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<any>{
-    return this.http.post(this.apiUrl, username, password);
+    const data = { username: username, password: password };
+    return this.http.post(this.apiUrl, data);
   }
 
 }
