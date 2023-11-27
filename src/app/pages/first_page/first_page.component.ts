@@ -30,23 +30,21 @@ export class First_pageComponent {
     this.displayDialog = false;
   }
 
-  logIn() {
-    this.signupService.login(this.username, this.password).subscribe(
+  logIn(){
+    const currentUser = new User(this.username, this.password);
+    this.signupService.login(currentUser).subscribe(
       {
         next: (response: string) => {
-          console.log(response);
           this.messageService.add({severity: 'success', summary: response});
-
         },
         error: (error: any) => {
-
           this.messageService.add({severity: 'error', summary: error.error});
           console.error(error);
-        },
+        }
       }
     );
-
   }
+
 }
 
 

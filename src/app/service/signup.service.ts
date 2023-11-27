@@ -12,9 +12,8 @@ export class SignupService {
 
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<any>{
-    const data = { username: username, password: password };
-    return this.http.post(this.apiUrl, data);
+  login(loginData: User): Observable<any>{
+    return this.http.post(this.apiUrl, loginData);
   }
 
 }
