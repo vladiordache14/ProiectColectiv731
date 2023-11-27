@@ -10,10 +10,16 @@ import {AdvertService} from "../service/advert.service";
 })
 export class AdvertsComponent implements OnInit{
   adverts: Advert[] = [];
+  showConfirmationDialog = false;
+  advertToDeactivate: Advert | null = null;
 
   constructor(private advertService: AdvertService) { }
 
   ngOnInit(): void {
+    this.loadAdverts();
+  }
+
+  loadAdverts(): void {
     this.advertService.getActiveAdverts().subscribe(adverts => {
       for (let advert of adverts) {
         advert.selectedIndex = 0;
@@ -26,16 +32,31 @@ export class AdvertsComponent implements OnInit{
     advert.selectedIndex = index;
   }
 
-  loadAdverts(): void {
-    this.advertService.getActiveAdverts().subscribe(adverts => {
-      for (let advert of adverts) {
-        advert.selectedIndex = 0;
-      }
-      this.adverts = adverts;
-    });
+  showConfirmation(advert: Advert): void {
+    this.advertToDeactivate = advert;
+    this.showConfirmationDialog = true;
+  }
+
+  onConfirmation(confirmed: boolean): void {
+    this.showConfirmationDialog = false;
+
+    if (confirmed && this.advertToDeactivate) {
+      this.deactivateAdvert(this.advertToDeactivate);
+    }
+
+    this.advertToDeactivate = null;
   }
 
   deactivateAdvert(advert: Advert): void {
+    this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
+      console.log('Advert deactivated successfully.');
+
+      this.loadAdverts();
+    });
+  }
+
+
+  /*deactivateAdvert(advert: Advert): void {
     this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
       console.log('Advert deactivated successfully.');
 
@@ -45,5 +66,5 @@ export class AdvertsComponent implements OnInit{
       // Optionally, trigger a reload of active adverts
       this.loadAdverts();
     });
-  }
+  }*/
 }

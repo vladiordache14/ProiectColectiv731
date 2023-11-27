@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
 import { AdvertService } from "../service/advert.service";
 import { AdvertsComponent } from "../components/adverts.component";
+import {AppModule} from "../../app.module";
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AdvertsComponent } from "../components/adverts.component";
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    AppModule
   ],
   providers: [
     AdvertService
