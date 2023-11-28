@@ -134,6 +134,16 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+app-confirmation-dialog {
+  position: fixed;
+  top: 50%; /* Adjust as needed */
+  left: 50%; /* Adjust as needed */
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  color:black;
+  background-color: #EBCDAD;
+}
+
 .carousel-container {
   position: relative;
   margin: auto;

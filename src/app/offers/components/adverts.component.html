@@ -23,9 +23,14 @@
           <p class="advert-price"> {{ advert.price }} € </p>
           <button class="buy-button"> Buy</button>
           <button class="edit-button"> Edit</button>
-          <button class="deactivate-button"(click)="deactivateAdvert(advert)">Deactivate</button>
+          <button class="deactivate-button" (click)="deactivateAdvert(advert)">Deactivate</button>
         </div>
       </div>
+      <app-confirmation-dialog
+        *ngIf="showConfirmationDialog"
+        [message]="'Are you sure you want to deactivate this advert?'"
+        (confirmed)="onConfirmation($event)"
+      ></app-confirmation-dialog>
     </div>
   </div>
 </div>

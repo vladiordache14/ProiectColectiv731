@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Advert} from "../advert";
 import {AdvertService} from "../service/advert.service";
+import {ConfirmationDialogService} from "./confirmation-dialog.service";
 
 @Component({
   selector: 'app-adverts',
@@ -9,11 +10,14 @@ import {AdvertService} from "../service/advert.service";
   styleUrls: ['./adverts.component.css']
 })
 export class AdvertsComponent implements OnInit{
-  adverts: Advert[] = [];
-  showConfirmationDialog = false;
-  advertToDeactivate: Advert | null = null;
+  adverts: Advert[] = []
+  showConfirmationDialog: boolean = false;
+  advertBeingDeactivated: Advert | null = null;
 
-  constructor(private advertService: AdvertService) { }
+  constructor(
+    private advertService: AdvertService,
+    private confirmationDialogService: ConfirmationDialogService
+  ) {}
 
   ngOnInit(): void {
     this.loadAdverts();
@@ -32,39 +36,59 @@ export class AdvertsComponent implements OnInit{
     advert.selectedIndex = index;
   }
 
-  showConfirmation(advert: Advert): void {
-    this.advertToDeactivate = advert;
-    this.showConfirmationDialog = true;
-  }
-
-  onConfirmation(confirmed: boolean): void {
-    this.showConfirmationDialog = false;
-
-    if (confirmed && this.advertToDeactivate) {
-      this.deactivateAdvert(this.advertToDeactivate);
-    }
-
-    this.advertToDeactivate = null;
-  }
-
-  deactivateAdvert(advert: Advert): void {
-    this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
-      console.log('Advert deactivated successfully.');
-
-      this.loadAdverts();
-    });
+  showConfirmation(): void {
+    this.showConfirmationDialog = true; // Set to true when "Deactivate" button is clicked
   }
 
 
   /*deactivateAdvert(advert: Advert): void {
-    this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
-      console.log('Advert deactivated successfully.');
+    console.log('Deactivate button clicked');
+    // Store the advert in a class property
+    this.advertBeingDeactivated = advert;
 
-      // Update local list to remove the deactivated advert
-      this.adverts = this.adverts.filter(a => a.advertId !== advert.advertId);
-
-      // Optionally, trigger a reload of active adverts
-      this.loadAdverts();
+    // Subscribe to the confirmation result
+    this.confirmationDialogService.showDialog$.subscribe((confirmed: boolean) => {
+      // User confirmed, proceed with deactivation logic
+      this.onConfirmation(confirmed);
     });
+
+    // Show the confirmation dialog
+    this.showConfirmationDialog = true;
   }*/
+
+  deactivateAdvert(advert: Advert): void {
+    // Store the advert in a class property
+    this.advertBeingDeactivated = advert;
+
+    // Show the confirmation dialog
+    this.showConfirmationDialog = true;
+  }
+
+  onConfirmation(confirmed: boolean): void {
+    if (confirmed) {
+      // User confirmed, proceed with deactivation logic
+      console.log('User confirmed deactivation');
+
+      const advert = this.advertBeingDeactivated;
+      if (advert) {
+        // Update advert to set isActive to false
+        advert.isActive = false;
+
+        // Deactivate the advert in the backend
+        this.advertService.deactivateAdvert(advert.advertId).subscribe(() => {
+          // Reload active adverts after deactivation
+          this.loadAdverts();
+        });
+      }
+    } else {
+      // User cancelled or the dialog was closed
+      console.log('Deactivation cancelled');
+    }
+
+    // Hide the confirmation dialog
+    this.showConfirmationDialog = false;
+
+    // Clear the stored advert
+    this.advertBeingDeactivated = null;
+  }
 }

@@ -3,22 +3,25 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
 import { AdvertService } from "../service/advert.service";
 import { AdvertsComponent } from "../components/adverts.component";
+import {ConfirmationDialogService} from "../components/confirmation-dialog.service";
 import {AppModule} from "../../app.module";
+import {ConfirmationDialogComponent} from "../components/confirmation-dialog/confirmation-dialog.component";
 
 @NgModule({
   declarations: [
-    AdvertsComponent
+    AdvertsComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    AppModule
   ],
   providers: [
     AdvertService
   ],
   exports: [
-    AdvertsComponent
+    AdvertsComponent,
+    ConfirmationDialogComponent
   ]
 })
 export class AdvertsModule { }
