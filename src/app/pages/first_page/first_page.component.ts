@@ -125,9 +125,9 @@ export class First_pageComponent {
             this.selectedRole="";
             this.roleInvalid = true;
             this.address="";
-            this.addressInvalid = true;
+            this.addressInvalid = false;
             this.phone="";
-            this.phoneInvalid=true;
+            this.phoneInvalid=false;
             console.log(response);
           },
           error: (error: any) => {
