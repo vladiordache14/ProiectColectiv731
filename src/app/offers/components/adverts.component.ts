@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Advert} from "../advert";
 import {AdvertService} from "../service/advert.service";
 import {ConfirmationDialogService} from "./confirmation-dialog.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-adverts',
@@ -16,12 +17,14 @@ export class AdvertsComponent implements OnInit{
 
   constructor(
     private advertService: AdvertService,
-    private confirmationDialogService: ConfirmationDialogService
+    private confirmationDialogService: ConfirmationDialogService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadAdverts();
   }
+
 
   loadAdverts(): void {
     this.advertService.getActiveAdverts().subscribe(adverts => {
@@ -91,4 +94,17 @@ export class AdvertsComponent implements OnInit{
     // Clear the stored advert
     this.advertBeingDeactivated = null;
   }
+
+  /*DOAR CU OBIECT
+  editAdvert(advert: Advert): void {
+    // Navigate to the edit page with the entire advert object as a parameter
+    this.router.navigate(['app-edit-advert-component'], { state: { advert } });
+  }*/
+
+  // cu id
+  editAdvert(advert: Advert): void {
+    // Navigate to the edit page with the entire advert object as a parameter
+    this.router.navigate(['app-edit-advert-component'], { state: { advertId: advert.advertId } });
+  }
+
 }

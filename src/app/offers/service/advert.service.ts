@@ -26,7 +26,19 @@ export class AdvertService {
   }
 
   deactivateAdvert(advertId: number): Observable<void> {
-    const url = `${this.apiUrl}/adverts/${advertId}/deactivate`;
-    return this.http.post<void>(url, {});
+    const url = `${this.apiUrl}/adverts/${advertId}`;
+    return this.http.delete<void>(url, {});
+    //pt edit avem put
   }
+
+  getAdvertById(advertId: number): Observable<Advert> {
+    const url = `${this.apiUrl}/adverts/${advertId}`; // sa mi facxa marc
+    return this.http.get<Advert>(url);
+  }
+
+  updateAdvert(updatedAdvert: Advert): Observable<Advert> {
+    const url = `${this.apiUrl}/adverts/existing/${Advert}`; // sa schimbe marc sa am tot id poate :))
+    return this.http.put<Advert>(url, updatedAdvert);
+  }
+
 }
