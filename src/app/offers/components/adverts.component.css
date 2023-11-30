@@ -139,3 +139,13 @@ body {
 .active, .dot:hover {
   opacity: 1;
 }
+
+.unusable{
+  display: none;
+  pointer-events: none;
+}
+
+.usable{
+  display: block; 
+  pointer-events: all;
+}

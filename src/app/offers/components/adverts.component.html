@@ -1,4 +1,6 @@
 <body>
+  <app-toggle-button class="toggle-button"></app-toggle-button>
+  <app-md-buttons class="unusable"></app-md-buttons>
 <div>
   <div class="adverts-container" *ngFor="let advert of adverts">
     <div class="advert-item">
@@ -21,7 +23,7 @@
           <p class="advert-seller-username"> {{ advert.seller.username}} </p>
           <div *ngIf="advert.seller.phoneNumber"> {{ advert.seller.phoneNumber}} </div>
           <p class="advert-price"> {{ advert.price }} € </p>
-          <button class="buy-button"> Buy</button>
+          <button class="buy-button usable"> Buy</button>
         </div>
       </div>
     </div>
