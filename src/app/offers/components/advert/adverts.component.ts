@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Advert} from "../advert";
-import {AdvertService} from "../service/advert.service";
+import {Advert} from "../../advert";
+import {AdvertService} from "../../service/advert.service";
 
 @Component({
   selector: 'app-adverts',

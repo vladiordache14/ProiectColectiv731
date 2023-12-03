@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from "@angular/common/http";
 import { AdvertService } from "../service/advert.service";
+import { CreateAdvertModalService } from '../service/create-advert-modal.service';
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,7 @@ import { AdvertService } from "../service/advert.service";
     HttpClientModule
   ],
   providers: [
-    AdvertService
+    AdvertService,
   ],
 })
 export class AdvertsModule { }

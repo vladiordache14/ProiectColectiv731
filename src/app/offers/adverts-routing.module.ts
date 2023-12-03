@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AdvertsComponent} from "./components/adverts.component";
+import {AdvertsComponent} from "./components/advert/adverts.component";
 import {RouterModule, Routes} from "@angular/router";
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AdvertsComponent
+    component: AdvertsComponent,
+    
   }
 ];
 
