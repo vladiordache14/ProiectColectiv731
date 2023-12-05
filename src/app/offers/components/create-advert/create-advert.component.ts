@@ -1,24 +1,30 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 import { Advert } from '../../advert';
 import { MatDialogRef } from '@angular/material/dialog';
+import {AdvertService} from "../../service/advert.service";
 
 @Component({
   selector: 'app-create-advert',
   templateUrl: './create-advert.component.html',
   styleUrls: ['./create-advert.component.css']
 })
-export class CreateAdvertComponent {
+export class CreateAdvertComponent implements OnInit {
   @Output() submitAdvert = new EventEmitter<Advert>();
-  advertForm: FormGroup;
+
+  advertForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
-  public dialogRef: MatDialogRef<CreateAdvertComponent>,) {
+              private advertService: AdvertService,
+              public dialogRef: MatDialogRef<CreateAdvertComponent>) {}
+
+  ngOnInit() {
     this.advertForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: [0, [Validators.required, Validators.min(0)]],
-    }); 
+      photos: this.fb.array([])
+    });
   }
 
   onSubmit() {
@@ -29,4 +35,5 @@ export class CreateAdvertComponent {
       this.dialogRef.close();
     }
   }
+
 }

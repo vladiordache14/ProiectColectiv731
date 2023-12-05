@@ -1,16 +1,47 @@
  <mat-card>
     <mat-card-content>
         <form [formGroup]="advertForm" (ngSubmit)="onSubmit()">
-            <label for="name">Name:</label>
-            <input type="text" id="name" formControlName="name">
+          <table>
+            <tr>
+              <div class="form-group">
+                <td><label for="name">Name: *</label></td>
+                <td><input type="text" id="name" required></td>
+              </div>
+            </tr>
 
-            <label for="description">Description:</label>
-            <textarea id="description" formControlName="description"></textarea>
+            <tr>
+              <td>include keywords: car/auto/vehicle</td>
+            </tr>
 
-            <label for="price">Price:</label>
-            <input type="number" id="price" formControlName="price">
+            <tr>
+              <div class="form-group">
+                <td><label for="description">Description: *</label></td>
+                <td><textarea type="text" id="description" required></textarea></td>
+              </div>
+            </tr>
 
+            <tr>
+              <div class="form-group">
+                <td><label for="price">Price: *</label></td>
+                <td><input type="number" id="price" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <div class="form-group">
+                <td><label for="photos">Photos: *</label></td>
+                <td><input type="text" id="photos" required></td>
+              </div>
+            </tr>
+
+            <tr>
+              <td class="mandatory">* mandatory</td>
+            </tr>
+          </table>
+
+          <footer>
             <button type="submit" [disabled]="advertForm.invalid">Submit</button>
+          </footer>
         </form>
     </mat-card-content>
 </mat-card>
