@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Advert } from '../../advert';
 import { MatDialogRef } from '@angular/material/dialog';
 import {AdvertService} from "../../service/advert.service";
@@ -21,9 +21,8 @@ export class CreateAdvertComponent implements OnInit {
   ngOnInit() {
     this.advertForm = this.fb.group({
       name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: [0, [Validators.required, Validators.min(0)]],
-      photos: this.fb.array([])
+      description: ['', [Validators.required, Validators.pattern(/(?:\bauto\b|\bcar\b|\bvehicle\b)/i)]],
+      price: ['', [Validators.required, Validators.min(0), Validators.pattern(/^\d+$/)]]
     });
   }
 
