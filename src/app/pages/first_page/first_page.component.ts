@@ -21,7 +21,6 @@ export class First_pageComponent {
 
   constructor(private messageService: MessageService, private signupService: SignupService) {
   }
-
   logInPopup() {
     this.displayDialog = true;
   }
