@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Advert} from "../advert";
 import {AdvertService} from "../service/advert.service";
+import {MatDialog} from "@angular/material/dialog";
+import {CartDialogComponent} from "../../cart-dialog/components/cart-dialog.component";
 
 @Component({
   selector: 'app-adverts',
@@ -11,7 +13,7 @@ import {AdvertService} from "../service/advert.service";
 export class AdvertsComponent implements OnInit{
   adverts: Advert[] = [];
 
-  constructor(private advertService: AdvertService) { }
+  constructor(private advertService: AdvertService, private dialog: MatDialog) { } // Inject MatDialog
 
   ngOnInit(): void {
     this.advertService.getActiveAdverts().subscribe(adverts => {
@@ -24,5 +26,12 @@ export class AdvertsComponent implements OnInit{
 
   selectImage(advert: Advert, index: number): void {
     advert.selectedIndex = index;
+  }
+
+  openCartDialog(): void {
+    this.dialog.open(CartDialogComponent, {
+      width: '450px',
+      data: { items: this.adverts }
+    });
   }
 }

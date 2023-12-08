@@ -1,0 +1,23 @@
+<body>
+<div class="shopping-cart">Shopping cart:</div>
+<br>
+<div class="cart-container">
+  <div *ngFor="let advert of data.items">
+    <div class="advert-item">
+      <h2 class="advert-title">{{ advert.name }}</h2>
+      <div class="advert-details">
+        <div *ngIf="advert.photos.length > 0" class="carousel-container">
+          <img
+            [src]="advert.photos[0].photoUrl"
+            [alt]="advert.photos[0].photoUrl"
+            [ngClass]="{'image-active': advert.selectedIndex === 0}"
+          >
+        </div>
+        <p class="advert-price"> {{ advert.price }} € </p>
+        <button class="remove-button" (click)="removeItem(advert)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <button class="place-order-button" (click)="placeOrder()">Place Order</button>
+</div>
+</body>
