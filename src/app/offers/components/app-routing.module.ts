@@ -8,18 +8,23 @@ import {EditAdvertComponentComponent} from "./edit-advert-component/edit-advert-
 import {AdvertsComponent} from "./adverts.component";
 import { BrowserModule } from '@angular/platform-browser';
 import {AppComponent} from "../../app.component";
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: 'app-adverts', component: AdvertsComponent },
-  { path: 'app-edit-advert-component', component: EditAdvertComponentComponent },
+  { path: 'editAdvert',component: EditAdvertComponentComponent },
   // Add other routes as needed
+  {
+    path: '',
+    component: AdvertsComponent,
+    pathMatch: 'full'
+  },
+  { path: '**', component: AdvertsComponent, pathMatch: 'full' }
 ];
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     [RouterModule.forRoot(routes)]
   ],
   exports: [RouterModule]

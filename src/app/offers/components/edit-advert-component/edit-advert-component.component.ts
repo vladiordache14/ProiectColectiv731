@@ -3,7 +3,10 @@ import {ActivatedRoute} from "@angular/router";
 import {Advert} from "../../advert";
 import {AdvertService} from "../../service/advert.service";
 import {Router} from "@angular/router";
-import {FormsModule} from "@angular/forms";
+
+/*interface AdvertState {
+  advertId: number;
+}*/
 
 @Component({
   selector: 'app-edit-advert-component',
@@ -11,7 +14,8 @@ import {FormsModule} from "@angular/forms";
   styleUrls: ['./edit-advert-component.component.css']
 })
 export class EditAdvertComponentComponent {
-  advert!: Advert
+  advert!: Advert;
+  //advert: Advert;
   isEditing: boolean = false;
 
   constructor(    private route: ActivatedRoute,
@@ -19,30 +23,33 @@ export class EditAdvertComponentComponent {
                   private router: Router) {}
 
 
+  /*ngOnInit(): void {
+    const advertId = this.router.getCurrentNavigation()?.extras.state?.advertId;
+
+    if (advertId) {
+      this.fetchAdvertData(advertId);
+    } else {
+      // Handle the case where advertId is not provided in the state
+      // You might want to navigate back or show an error message
+    }
+  }*/
+
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const advertId = +params['advertId'];
       this.fetchAdvertData(advertId);
-      this.enableEditing(); // N AM ASTA declarat doar ca obiect si nu mi l recunoaste gen in html dupa
     });
   }
 
 
-  /* DOAR CU OBIECT
-  ngOnInit(): void {
-    const state = this.router.getCurrentNavigation()?.extras.state as { advert: Advert } | undefined;
-    if (state && state.advert) {
-      this.advert = state.advert;
-    } else {
-      // Handle the case where the advert is not present in state
-    }
-  }*/
-
   private fetchAdvertData(advertId: number): void {
-    // Call your service to fetch advert data based on advertId
     this.advertService.getAdvertById(advertId).subscribe(advert => {
       this.advert = advert;
-    });
+    },
+      error => {
+        console.error('Error fetching advert:', error);
+      });
   }
 
   enableEditing(): void {
@@ -53,16 +60,22 @@ export class EditAdvertComponentComponent {
     advert.selectedIndex = index;
   }
 
+  /*saveChanges(): void {
+    this.advertService.updateAdvert(this.advert).subscribe(() => {
+      // Redirect back to the AdvertsComponent
+      this.router.navigate(['app-adverts']);
+    }); */
+
   saveChanges(): void {
     // Call your service to update the advert data
     this.advertService.updateAdvert(this.advert).subscribe(() => {
-      // Redirect back to the AdvertsComponent or any other desired route
-      this.router.navigate(['app-adverts']);
+      window.history.back(); // Navigate back to the previous page
     });
 
     // Disable editing after saving changes
     this.isEditing = false;
   }
+
 
 
 }

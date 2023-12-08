@@ -1,4 +1,26 @@
+<!-- edit-advert-component.component.html -->
 
-<div>
-  <p>This is the Edit Advert component.</p>
+<div *ngIf="advert">
+  <h2>{{ advert.name }}</h2>
+  <p>{{ advert.description }}</p>
+  <p>{{ advert.seller.username }}</p>
+  <div *ngIf="advert.seller.phoneNumber">{{ advert.seller.phoneNumber }}</div>
+  <p>{{ advert.price }} €</p>
+
+  <!-- Enable editing button -->
+  <button *ngIf="!isEditing" (click)="enableEditing()">Edit</button>
+
+  <!-- Input fields for editing -->
+  <div *ngIf="isEditing">
+    <label for="name">Name:</label>
+    <input id="name" [(ngModel)]="advert.name" />
+
+    <label for="description">Description:</label>
+    <textarea id="description" [(ngModel)]="advert.description"></textarea>
+
+    <!-- mai vad dupa ... -->
+
+    <!-- Save changes button -->
+    <button (click)="saveChanges()">Save Changes</button>
+  </div>
 </div>

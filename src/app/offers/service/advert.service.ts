@@ -8,7 +8,7 @@ import {Advert} from "../advert";
 })
 export class AdvertService {
   private apiUrl = 'http://localhost:8080';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, ) { }
 
   getActiveAdverts(): Observable<Advert[]> {
     return this.http.get<Advert[]>("http://localhost:8080/adverts/active").pipe(
@@ -31,10 +31,12 @@ export class AdvertService {
     //pt edit avem put
   }
 
+  //show current advert
   getAdvertById(advertId: number): Observable<Advert> {
     const url = `${this.apiUrl}/adverts/${advertId}`; // sa mi facxa marc
     return this.http.get<Advert>(url);
   }
+
 
   updateAdvert(updatedAdvert: Advert): Observable<Advert> {
     const url = `${this.apiUrl}/adverts/existing/${Advert}`; // sa schimbe marc sa am tot id poate :))

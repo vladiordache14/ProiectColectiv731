@@ -95,16 +95,11 @@ export class AdvertsComponent implements OnInit{
     this.advertBeingDeactivated = null;
   }
 
-  /*DOAR CU OBIECT
-  editAdvert(advert: Advert): void {
-    // Navigate to the edit page with the entire advert object as a parameter
-    this.router.navigate(['app-edit-advert-component'], { state: { advert } });
-  }*/
 
-  // cu id
   editAdvert(advert: Advert): void {
     // Navigate to the edit page with the entire advert object as a parameter
-    this.router.navigate(['app-edit-advert-component'], { state: { advertId: advert.advertId } });
+    this.router.navigate(['editAdvert'], { state: { advertId: advert.advertId } });
   }
+
 
 }
