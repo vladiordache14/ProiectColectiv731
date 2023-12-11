@@ -90,6 +90,13 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-icon-container {
+  margin-right: 8px;
 }
 
 .carousel-container {

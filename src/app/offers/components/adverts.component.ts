@@ -12,6 +12,7 @@ import {CartDialogComponent} from "../../cart-dialog/components/cart-dialog.comp
 })
 export class AdvertsComponent implements OnInit{
   adverts: Advert[] = [];
+  advertsInCart: Advert[] = [];
 
   constructor(private advertService: AdvertService, private dialog: MatDialog) { } // Inject MatDialog
 
@@ -28,10 +29,15 @@ export class AdvertsComponent implements OnInit{
     advert.selectedIndex = index;
   }
 
+  addToCart(advert: Advert) {
+    // Adding a copy to the cart
+    this.advertsInCart.push({ ...advert });
+  }
+
   openCartDialog(): void {
     this.dialog.open(CartDialogComponent, {
-      width: '450px',
-      data: { items: this.adverts }
+      width: '55%',
+      data: this.advertsInCart
     });
   }
 }

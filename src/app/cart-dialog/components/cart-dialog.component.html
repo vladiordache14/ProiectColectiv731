@@ -1,23 +1,42 @@
 <body>
-<div class="shopping-cart">Shopping cart:</div>
+<div class="cart-header">
+  <div class="shopping-cart">Shopping cart:</div>
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
 <br>
 <div class="cart-container">
-  <div *ngFor="let advert of data.items">
+  <div *ngFor="let advert of data">
     <div class="advert-item">
       <h2 class="advert-title">{{ advert.name }}</h2>
       <div class="advert-details">
         <div *ngIf="advert.photos.length > 0" class="carousel-container">
-          <img
-            [src]="advert.photos[0].photoUrl"
-            [alt]="advert.photos[0].photoUrl"
-            [ngClass]="{'image-active': advert.selectedIndex === 0}"
-          >
+          <img *ngFor="let image of advert.photos;  let i=index"
+               [src]="advert.photos[i].photoUrl" [alt]="advert.photos[i].photoUrl"
+               [ngClass]="{'image-active': advert.selectedIndex === i}">
+          <div class="carousel-dot-container">
+    <span *ngFor="let dot of advert.photos; let i=index"
+          class="dot"
+          [ngClass]="{'active': advert.selectedIndex === i}"
+          (click)="selectImage(advert, i)">
+    </span>
+          </div>
         </div>
-        <p class="advert-price"> {{ advert.price }} € </p>
-        <button class="remove-button" (click)="removeItem(advert)">Remove</button>
+        <div class="advert-info">
+          <p class="advert-price"> {{ advert.price }} € </p>
+        </div>
+        <button class="remove-button" (click)="removeItem(advert)">
+          <span class="remove-icon-container">
+            <mat-icon>remove_circle_outline</mat-icon>
+          </span>
+          Remove
+        </button>
       </div>
     </div>
   </div>
-  <button class="place-order-button" (click)="placeOrder()">Place Order</button>
+  <div class="order-button-container">
+    <button class="place-order-button" (click)="placeOrder()">Place Order</button>
+  </div>
 </div>
 </body>

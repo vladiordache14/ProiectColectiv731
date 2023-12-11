@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {Advert} from "../../offers/advert";
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-cart-dialog',
@@ -8,13 +8,22 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   styleUrls: ['./cart-dialog.component.css']
 })
 export class CartDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Advert[],
+              private dialogRef: MatDialogRef<CartDialogComponent>) { }
 
-  removeItem(advert: any) {
-
+  removeItem(advert: Advert) {
+    this.data = this.data.filter(item => item !== advert)
   }
 
   placeOrder() {
 
+  }
+
+  closeDialog() {
+    this.dialogRef.close(this.data);
+  }
+
+  selectImage(advert: Advert, index: number): void {
+    advert.selectedIndex = index;
   }
 }
