@@ -1,8 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Advert } from '../../advert';
-import { MatDialogRef } from '@angular/material/dialog';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {AdvertService} from "../../service/advert.service";
+import {AdvertsComponent} from "../advert/adverts.component";
+import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
 
 @Component({
   selector: 'app-create-advert',
@@ -16,6 +18,7 @@ export class CreateAdvertComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private advertService: AdvertService,
+              public dialog: MatDialog,
               public dialogRef: MatDialogRef<CreateAdvertComponent>) {}
 
   ngOnInit() {
@@ -28,11 +31,35 @@ export class CreateAdvertComponent implements OnInit {
 
   onSubmit() {
     if (this.advertForm.valid) {
-      const advertData = this.advertForm.value as Advert;
-      this.submitAdvert.emit(advertData);
-      this.advertForm.reset();
-      this.dialogRef.close();
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '250px',
+        data: 'Are you sure you want to submit this advert?'
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          const advertData = this.advertForm.value as Advert;
+          this.saveAdvert(advertData);
+        }
+      });
     }
   }
 
+  openDialog(): void {
+      this.dialog.open(AdvertsComponent, {
+        width: '250px'
+      });
+    }
+
+  saveAdvert(advertData: Advert) {
+    this.advertService.addAdvert(advertData).subscribe(
+      (response) => {
+        console.log('Advert added:', response);
+        this.openDialog();
+      },
+      (error) => {
+        console.error('Error adding advert:', error);
+      }
+    );
+  }
 }

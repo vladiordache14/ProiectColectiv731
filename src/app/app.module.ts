@@ -12,16 +12,18 @@ import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreateAdvertModalService } from './offers/service/create-advert-modal.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button'; 
- 
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmDialogComponent } from './offers/components/confirm-dialog/confirm-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     AdvertsComponent,
     NavbarComponent,
     CreateAdvertComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule
-    
+
   ],
   providers: [
       CreateAdvertModalService

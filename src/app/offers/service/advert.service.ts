@@ -25,7 +25,7 @@ export class AdvertService {
   }
 
     addAdvert(advert: Advert): Observable<Advert> {
-    return this.http.post<Advert>("http://localhost:8080/adverts/add", advert).pipe(
+    return this.http.post<Advert>("http://localhost:8080/adverts/create", advert).pipe(
       catchError((error: any, caught: Observable<Advert>) => {
         console.error('Error adding advert:', error);
         return throwError(() => new Error('An error occurred while adding the advert'));
