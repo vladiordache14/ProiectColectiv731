@@ -1,0 +1,17 @@
+/* Everything is optional and can be changed */
+
+button {
+    border: 1px, solid, black;
+    color: black;
+    background-color: white;
+}
+button:hover{
+    color: white;
+    background-color: black;
+}
+
+div{
+    margin-left: 10px;
+    border: 1px, solid, black;
+    padding:2px;
+}

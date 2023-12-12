@@ -1,0 +1,6 @@
+<button
+  [ngClass]="{ 'toggled': isToggled$ | async }"
+  (click)="toggleButton()"
+>
+  {{ getButtonText() }}
+</button>
