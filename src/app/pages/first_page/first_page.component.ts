@@ -12,54 +12,17 @@ import {SignupService} from "../../service/signup.service";
 export class First_pageComponent {
 
   displayDialog: boolean = false;
-  username: string="";
-  password: string="";
   email: string="";
-  selectedRole: string="";
-  roleOptions: string[] = ['SELLER', 'BUYER'];
   address: string="";
   phone: string="";
   messages: any[] = []; // Array to store messages
 
-  usernameInvalid: boolean = true;
-  passwordInvalid: boolean = true;
   emailInvalid: boolean = true;
-  roleInvalid: boolean = true;
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
   constructor(private messageService: MessageService, private signupService: SignupService) {}
 
-  checkUsername() {
-    this.usernameInvalid = false;
-
-    if (this.username.length==0) {
-      this.usernameInvalid = true; // Username is mandatory
-    } else if (this.username.length > 30) {
-      this.usernameInvalid = true; // Max length is 30 characters
-    }
-  }
-
-  checkPassword() {
-    this.passwordInvalid = false;
-
-    const uppercaseRegex = /[A-Z]/;
-    const lowercaseRegex = /[a-z]/;
-    const digitRegex = /\d/;
-
-    if (this.password.length == 0 || this.password.length > 30) {
-      this.passwordInvalid = true;
-    }
-    else if (!(uppercaseRegex.test(<string>this.password))){
-      this.passwordInvalid = true;
-    }
-    else if (!(lowercaseRegex.test(<string>this.password))){
-      this.passwordInvalid = true;
-    }
-    else if (!(digitRegex.test(<string>this.password))){
-      this.passwordInvalid = true;
-    }
-  }
 
   checkEmail() {
     this.emailInvalid = false;
@@ -69,13 +32,6 @@ export class First_pageComponent {
       this.emailInvalid = true;
     } else if(!(emailPattern.test(<string>this.email))){
       this.emailInvalid = true;
-    }
-  }
-
-  checkRole() {
-    this.roleInvalid = false;
-    if (!this.selectedRole) {
-      this.roleInvalid = true;
     }
   }
 
@@ -140,7 +96,7 @@ export class First_pageComponent {
   }
 
   fieldsValid(){
-    if(this.usernameInvalid || this.passwordInvalid || this.emailInvalid || this.roleInvalid || this.addressInvalid || this.phoneInvalid){
+    if( this.emailInvalid ||  this.addressInvalid || this.phoneInvalid){
       return false;
     }
     return true;
