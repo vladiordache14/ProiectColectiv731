@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import {User} from "../../model/user";
 import {SignupService} from "../../service/signup.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class First_pageComponent {
   usernameInvalid: boolean = true;
   passwordInvalid: boolean = true;
 
-  constructor(private messageService: MessageService, private signupService: SignupService) {
+  constructor(private messageService: MessageService, private signupService: SignupService, private router: Router) {
   }
   logInPopup() {
     this.displayDialog = true;
@@ -35,10 +36,13 @@ export class First_pageComponent {
       {
         next: (response: string) => {
           this.messageService.add({severity: 'success', summary: response});
+          this.router.navigate(['/adverts'])
         },
         error: (error: any) => {
           this.messageService.add({severity: 'error', summary: error.error});
           console.error(error);
+          this.router.navigate(['/adverts'])
+
         }
       }
     );

@@ -20,6 +20,7 @@ import { MessageService } from 'primeng/api';
 import {MessagesModule} from "primeng/messages";
 import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
+import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
 
 
 
@@ -34,6 +35,7 @@ import {PasswordModule} from "primeng/password";
 
   ],
   imports: [
+     HttpClientModule, AdvertsRoutingModule, AppRoutingModule,
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
