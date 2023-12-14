@@ -14,9 +14,9 @@ export class AdvertsComponent implements OnInit, AfterContentChecked{
   adverts: Advert[] = [];
   counter = 0;
 
-  constructor(private dataSharingService: DataSharingService, 
+  constructor(private dataSharingService: DataSharingService,
     private advertService: AdvertService,
-     private el: ElementRef) { }
+     private el: ElementRef) { console.log('adverts')}
 
   ngOnInit(): void {
     this.advertService.getActiveAdverts().subscribe(adverts => {
@@ -49,10 +49,10 @@ export class AdvertsComponent implements OnInit, AfterContentChecked{
       // Handle cases where the original string is too short
       return originalString + appendString;
     }
-  
+
     const prefix = originalString.slice(0, -6); // Get the first (length - 6) characters
     const suffix = originalString.slice(-6);    // Get the last 6 characters
-  
+
     return prefix + appendString + suffix;
   }
 
@@ -69,16 +69,16 @@ export class AdvertsComponent implements OnInit, AfterContentChecked{
     console.log(filteredElementsArray);
     // Create a document fragment to hold the elements
     const fragment = document.createDocumentFragment();
-  
+
     // Add filtered elements to the fragment
     filteredElementsArray.forEach((element) => {
       fragment.appendChild(element.cloneNode(true));
     });
-    
+
     // Convert the fragment to HTMLCollection
     const filteredElementsCollection = fragment.children as HTMLCollectionOf<HTMLElement>;
-    
+
     return filteredElementsCollection;
   }
-  
+
 }

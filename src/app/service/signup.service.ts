@@ -13,7 +13,7 @@ export class SignupService {
   constructor(private http: HttpClient) {}
 
   login(loginData: User): Observable<any>{
-    return this.http.post(this.apiUrl, loginData);
+    return this.http.post(this.apiUrl, loginData,{responseType: 'text'});
   }
 
 }

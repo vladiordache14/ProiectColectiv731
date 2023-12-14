@@ -8,10 +8,9 @@ import {First_pageComponent} from "./pages/first_page/first_page.component";
 const routes: Routes = [
   { path: '', component: First_pageComponent },
   {
-    path: '**',
-    redirectTo: 'adverts',
-    pathMatch: 'full'
-  },
+    path: 'adverts',
+    loadChildren: () => import('./offers/module/adverts.module').then(m => m.AdvertsModule)
+  }
 ];
 
 @NgModule({

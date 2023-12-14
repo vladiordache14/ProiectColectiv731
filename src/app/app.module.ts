@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {AdvertsComponent} from "./offers/components/adverts.component";
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-button.component';
@@ -26,12 +25,7 @@ import {PasswordModule} from "primeng/password";
 @NgModule({
   declarations: [
     AppComponent,
-    AdvertsComponent,
-    ToggleButtonComponent,
-    PageTwoComponent,
     First_pageComponent,
-    ModifyAndDeactivateButtonsComponent
-
   ],
   imports: [
     BrowserModule,
