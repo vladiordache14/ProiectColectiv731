@@ -11,10 +11,13 @@ import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
 import {First_pageComponent} from "../components/first_page/first_page.component";
 import {CommonModule} from "@angular/common";
+import {First_pageRoutingModule} from "../first_page-routing.module";
+
 
 @NgModule({
   declarations: [First_pageComponent],
   imports: [
+    First_pageRoutingModule,
     CommonModule,
     RouterOutlet,
     ButtonModule,

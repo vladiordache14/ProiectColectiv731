@@ -6,7 +6,8 @@ import {RouterModule, Routes} from "@angular/router";
 import {First_pageComponent} from "./components/first_page/first_page.component";
 
 const routes: Routes = [
-  { path: '', component: First_pageComponent },
+  { path: '',
+    component: First_pageComponent },
 ];
 
 @NgModule({
@@ -16,6 +17,7 @@ const routes: Routes = [
     ButtonModule,
     DialogModule,
     RouterModule.forRoot(routes),
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class First_pageRoutingModule { }

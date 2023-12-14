@@ -7,7 +7,7 @@ import {First_pageComponent} from "./offers/components/first_page/first_page.com
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'first_page',
     loadChildren: () => import('./offers/module/first_page.module').then(m => m.First_pageModule)
   },
   {
