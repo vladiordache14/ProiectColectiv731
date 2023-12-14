@@ -6,10 +6,12 @@ import { PageTwoComponent } from './components/page-two/page-two.component';
 import {AdvertsComponent} from "./components/adverts.component";
 
 
+
 const routes: Routes = [
   { path: 'page-one', component: AdvertsComponent },
   { path: 'page-two', component: PageTwoComponent },
 ];
+
 
 @NgModule({
   imports: [
