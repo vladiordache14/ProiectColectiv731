@@ -18,6 +18,10 @@ export class AdvertsComponent implements OnInit {
   constructor(private advertService: AdvertService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+
+    // Clear the localStorage when the page is refreshed
+    localStorage.removeItem(this.cartDataKey);
+
     this.advertService.getActiveAdverts().subscribe(adverts => {
       for (let advert of adverts) {
         advert.selectedIndex = 0;
