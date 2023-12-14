@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import {User} from "../../model/user";
 import {SignupService} from "../../service/signup.service";
+<<<<<<< HEAD
+=======
+import {Router} from "@angular/router";
+>>>>>>> developer
 
 
 @Component({
@@ -12,6 +16,7 @@ import {SignupService} from "../../service/signup.service";
 export class First_pageComponent {
 
   displayDialog: boolean = false;
+<<<<<<< HEAD
   username: string="";
   password: string="";
   email: string="";
@@ -19,10 +24,15 @@ export class First_pageComponent {
   roleOptions: string[] = ['SELLER', 'BUYER'];
   address: string="";
   phone: string="";
+=======
+  username: string = "";
+  password: string = "";
+>>>>>>> developer
   messages: any[] = []; // Array to store messages
 
   usernameInvalid: boolean = true;
   passwordInvalid: boolean = true;
+<<<<<<< HEAD
   emailInvalid: boolean = true;
   roleInvalid: boolean = true;
   addressInvalid: boolean = false;
@@ -146,3 +156,40 @@ export class First_pageComponent {
     return true;
   }
 }
+=======
+
+  constructor(private messageService: MessageService, private signupService: SignupService, private router: Router) {
+  }
+  logInPopup() {
+    this.displayDialog = true;
+  }
+
+  hideDialog() {
+    this.displayDialog = false;
+  }
+
+  logIn(){
+    const currentUser = new User(this.username, this.password);
+    this.signupService.login(currentUser).subscribe(
+      {
+        next: (response: string) => {
+          this.messageService.add({severity: 'success', summary: response});
+          this.router.navigate(['/adverts'])
+        },
+        error: (error: any) => {
+          this.messageService.add({severity: 'error', summary: error.error});
+          console.error(error);
+          this.router.navigate(['/adverts'])
+
+        }
+      }
+    );
+  }
+
+}
+
+
+
+
+
+>>>>>>> developer

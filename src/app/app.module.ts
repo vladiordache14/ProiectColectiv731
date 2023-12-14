@@ -2,8 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import {AdvertsComponent} from "./offers/components/adverts.component";
 import { AppRoutingModule } from './app-routing.module';
-import { First_pageComponent } from './pages/first_page/./first_page.component';
+import {HttpClientModule} from "@angular/common/http";
+import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-button.component';
+import { PageTwoComponent } from './offers/components/page-two/page-two.component';
+import { ModifyAndDeactivateButtonsComponent } from './offers/components/modify-and-deactivate-buttons/modify-and-deactivate-buttons.component';
+import { ToggleService } from './offers/service/toggle.service';
+import { First_pageComponent } from './pages/first_page/first_page.component';
 import {RouterOutlet} from "@angular/router";
 import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
@@ -14,16 +20,22 @@ import { MessageService } from 'primeng/api';
 import {MessagesModule} from "primeng/messages";
 import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
-import { HttpClientModule } from '@angular/common/http';
+import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    First_pageComponent
+    AdvertsComponent,
+    ToggleButtonComponent,
+    PageTwoComponent,
+    First_pageComponent,
+    ModifyAndDeactivateButtonsComponent
+
   ],
   imports: [
+     HttpClientModule, AdvertsRoutingModule, AppRoutingModule,
     BrowserModule,
     AppRoutingModule,
     RouterOutlet,
@@ -36,9 +48,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChipsModule,
     PasswordModule,
     HttpClientModule
-
   ],
-  providers: [MessageService],
+  providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
