@@ -9,7 +9,7 @@ import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-
 import { PageTwoComponent } from './offers/components/page-two/page-two.component';
 import { ModifyAndDeactivateButtonsComponent } from './offers/components/modify-and-deactivate-buttons/modify-and-deactivate-buttons.component';
 import { ToggleService } from './offers/service/toggle.service';
-import { First_pageComponent } from './pages/first_page/first_page.component';
+import { First_pageComponent } from './offers/components/first_page/first_page.component';
 import {RouterOutlet} from "@angular/router";
 import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
@@ -21,8 +21,7 @@ import {MessagesModule} from "primeng/messages";
 import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
 import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
-
-
+import {First_pageModule} from "./offers/module/first_page.module";
 
 @NgModule({
   declarations: [
@@ -30,24 +29,16 @@ import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
     AdvertsComponent,
     ToggleButtonComponent,
     PageTwoComponent,
-    First_pageComponent,
-    ModifyAndDeactivateButtonsComponent
+    ModifyAndDeactivateButtonsComponent,
 
   ],
   imports: [
-     HttpClientModule, AdvertsRoutingModule, AppRoutingModule,
     BrowserModule,
+    AdvertsRoutingModule,
     AppRoutingModule,
-    RouterOutlet,
-    ButtonModule,
-    DialogModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    DropdownModule,
-    FormsModule,
-    MessagesModule,
-    ChipsModule,
-    PasswordModule,
-    HttpClientModule
+    First_pageModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]

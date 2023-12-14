@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import {User} from "../../model/user";
-import {SignupService} from "../../service/signup.service";
-<<<<<<< HEAD
-=======
+import {User} from "../../../model/user";
+import {SignupService} from "./signup.service";
 import {Router} from "@angular/router";
->>>>>>> developer
 
 
 @Component({
@@ -15,35 +12,32 @@ import {Router} from "@angular/router";
 })
 export class First_pageComponent {
 
+  displayDialog1: boolean = false;
   displayDialog: boolean = false;
-<<<<<<< HEAD
-  username: string="";
-  password: string="";
-  email: string="";
-  selectedRole: string="";
-  roleOptions: string[] = ['SELLER', 'BUYER'];
-  address: string="";
-  phone: string="";
-=======
   username: string = "";
   password: string = "";
->>>>>>> developer
+  email: string = "";
+  selectedRole: string = "";
+  roleOptions: string[] = ['SELLER', 'BUYER'];
+  address: string = "";
+  phone: string = "";
+
   messages: any[] = []; // Array to store messages
 
   usernameInvalid: boolean = true;
   passwordInvalid: boolean = true;
-<<<<<<< HEAD
   emailInvalid: boolean = true;
   roleInvalid: boolean = true;
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
-  constructor(private messageService: MessageService, private signupService: SignupService) {}
+  constructor(private messageService: MessageService, private signupService: SignupService, private router:Router) {
+  }
 
   checkUsername() {
     this.usernameInvalid = false;
 
-    if (this.username.length==0) {
+    if (this.username.length == 0) {
       this.usernameInvalid = true; // Username is mandatory
     } else if (this.username.length > 30) {
       this.usernameInvalid = true; // Max length is 30 characters
@@ -59,14 +53,11 @@ export class First_pageComponent {
 
     if (this.password.length == 0 || this.password.length > 30) {
       this.passwordInvalid = true;
-    }
-    else if (!(uppercaseRegex.test(<string>this.password))){
+    } else if (!(uppercaseRegex.test(<string>this.password))) {
       this.passwordInvalid = true;
-    }
-    else if (!(lowercaseRegex.test(<string>this.password))){
+    } else if (!(lowercaseRegex.test(<string>this.password))) {
       this.passwordInvalid = true;
-    }
-    else if (!(digitRegex.test(<string>this.password))){
+    } else if (!(digitRegex.test(<string>this.password))) {
       this.passwordInvalid = true;
     }
   }
@@ -77,7 +68,7 @@ export class First_pageComponent {
 
     if (this.email.length == 0) {
       this.emailInvalid = true;
-    } else if(!(emailPattern.test(<string>this.email))){
+    } else if (!(emailPattern.test(<string>this.email))) {
       this.emailInvalid = true;
     }
   }
@@ -89,55 +80,55 @@ export class First_pageComponent {
     }
   }
 
-  checkAddress(){
+  checkAddress() {
     this.addressInvalid = false;
-    if(this.address){
-      if(this.address.length>300){
+    if (this.address) {
+      if (this.address.length > 300) {
         this.addressInvalid = true;
       }
     }
   }
 
-  checkPhone(){
+  checkPhone() {
     this.phoneInvalid = false;
     const onlyNumbersRegex = /^\d+$/;
 
-    if(this.phone){
-      if(this.phone.length != 10 || !onlyNumbersRegex.test(this.phone)){
+    if (this.phone) {
+      if (this.phone.length != 10 || !onlyNumbersRegex.test(this.phone)) {
         this.phoneInvalid = true;
       }
     }
   }
 
-  createAccountPopup(){
-    this.displayDialog = true;
+  createAccountPopup() {
+    this.displayDialog1 = true;
   }
 
-  hideDialog() {
-    this.displayDialog = false;
+  hideDialog1() {
+    this.displayDialog1 = false;
   }
 
 
-  registerUser(){
-    if(this.fieldsValid()) {
+  registerUser() {
+    if (this.fieldsValid()) {
       const currentUser = new User(this.username, this.password, this.email, this.selectedRole.toString(), this.address, this.phone)
 
       this.signupService.signup(currentUser, {responseType: 'text'}).subscribe(
         {
           next: (response: string) => {
             this.messageService.add({severity: 'success', summary: response});
-            this.username="";
-            this.usernameInvalid=true;
-            this.password="";
-            this.passwordInvalid=true;
-            this.email="";
+            this.username = "";
+            this.usernameInvalid = true;
+            this.password = "";
+            this.passwordInvalid = true;
+            this.email = "";
             this.emailInvalid = true;
-            this.selectedRole="";
+            this.selectedRole = "";
             this.roleInvalid = true;
-            this.address="";
+            this.address = "";
             this.addressInvalid = false;
-            this.phone="";
-            this.phoneInvalid=false;
+            this.phone = "";
+            this.phoneInvalid = false;
             console.log(response);
           },
           error: (error: any) => {
@@ -149,16 +140,11 @@ export class First_pageComponent {
     }
   }
 
-  fieldsValid(){
-    if(this.usernameInvalid || this.passwordInvalid || this.emailInvalid || this.roleInvalid || this.addressInvalid || this.phoneInvalid){
+  fieldsValid() {
+    if (this.usernameInvalid || this.passwordInvalid || this.emailInvalid || this.roleInvalid || this.addressInvalid || this.phoneInvalid) {
       return false;
     }
     return true;
-  }
-}
-=======
-
-  constructor(private messageService: MessageService, private signupService: SignupService, private router: Router) {
   }
   logInPopup() {
     this.displayDialog = true;
@@ -169,7 +155,7 @@ export class First_pageComponent {
   }
 
   logIn(){
-    const currentUser = new User(this.username, this.password);
+    const currentUser = new User(this.username, this.password,'','','','');
     this.signupService.login(currentUser).subscribe(
       {
         next: (response: string) => {
@@ -187,9 +173,3 @@ export class First_pageComponent {
   }
 
 }
-
-
-
-
-
->>>>>>> developer

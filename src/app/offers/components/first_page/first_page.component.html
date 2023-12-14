@@ -5,7 +5,7 @@
 
   <p-button label="Create account" (onClick)="createAccountPopup()" class="createAccountButton"></p-button>
 
-  <p-dialog header="Create your account" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
+  <p-dialog header="Create your account" [(visible)]="displayDialog1" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
     <!-- Content of your popup goes here -->
 
     <p-messages [(value)]="messages"></p-messages>
@@ -78,7 +78,7 @@
 
     <p-footer>
       <button pButton type="button" label="Save" (click)="registerUser()" class="p-button-primary" [disabled]="!fieldsValid()"></button>
-      <button pButton type="button" label="Cancel" (click)="hideDialog()" class="p-button-secondary"></button>
+      <button pButton type="button" label="Cancel" (click)="hideDialog1()" class="p-button-secondary"></button>
     </p-footer>
 
   </p-dialog>
