@@ -28,6 +28,6 @@ const routes: Routes = [
     ButtonModule,
     DialogModule,
     RouterModule.forRoot(routes),
-  ]
+  ],
 })
 export class AppRoutingModule { }
