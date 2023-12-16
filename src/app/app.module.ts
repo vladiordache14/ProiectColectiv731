@@ -9,24 +9,20 @@ import { PageTwoComponent } from './offers/components/page-two/page-two.componen
 import { ModifyAndDeactivateButtonsComponent } from './offers/components/modify-and-deactivate-buttons/modify-and-deactivate-buttons.component';
 import { ToggleService } from './offers/service/toggle.service';
 import { First_pageComponent } from './pages/first_page/first_page.component';
-import {RouterOutlet} from "@angular/router";
-import {ButtonModule} from "primeng/button";
-import {DialogModule} from "primeng/dialog";
+import { RouterOutlet } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DropdownModule} from "primeng/dropdown";
-import {FormsModule} from "@angular/forms";
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import {MessagesModule} from "primeng/messages";
-import {ChipsModule} from "primeng/chips";
-import {PasswordModule} from "primeng/password";
-
-
+import { MessagesModule } from 'primeng/messages';
+import { ChipsModule } from 'primeng/chips';
+import { PasswordModule } from 'primeng/password';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    First_pageComponent,
-  ],
+  declarations: [AppComponent, First_pageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,9 +35,10 @@ import {PasswordModule} from "primeng/password";
     MessagesModule,
     ChipsModule,
     PasswordModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthenticationModule,
   ],
   providers: [MessageService, ToggleService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

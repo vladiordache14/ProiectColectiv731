@@ -1,56 +1,49 @@
-import { Component } from '@angular/core';
-import { MessageService } from 'primeng/api';
-import {User} from "../../model/user";
-import {SignupService} from "../../service/signup.service";
-import {Router} from "@angular/router";
-
+import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject, filter, of, takeUntil, takeWhile } from 'rxjs';
+import { SignupService } from 'src/app/authentication/services/signup.service';
 
 @Component({
   selector: 'app-first_page',
   templateUrl: './first_page.component.html',
-  styleUrls: ['./first_page.component.css']
+  styleUrls: ['./first_page.component.css'],
 })
-export class First_pageComponent {
-
+export class First_pageComponent implements OnDestroy {
+  private unsubscribe = new Subject();
   displayDialog: boolean = false;
-  username: string = "";
-  password: string = "";
-  messages: any[] = []; // Array to store messages
 
-  usernameInvalid: boolean = true;
-  passwordInvalid: boolean = true;
-
-  constructor(private messageService: MessageService, private signupService: SignupService, private router: Router) {
+  constructor(private router: Router, private signupService: SignupService) {}
+  ngOnDestroy(): void {
+    this.unsubscribe.next('');
   }
+
   logInPopup() {
-    this.displayDialog = true;
+    this.signupService.openLoginModal.next(true);
+    console.log(this.signupService.authenticationState);
+    this.signupService.authenticationState
+      .pipe(
+        takeWhile((value) => value == false, true),
+        takeUntil(
+          this.signupService.openLoginModal.pipe(
+            filter((value) => value == false)
+          )
+        )
+      )
+
+      .subscribe((value) => {
+        console.log('sadasdas');
+        if (value === true) {
+          this.hideDialog();
+          this.routeOnSuccess();
+        }
+      });
   }
 
   hideDialog() {
-    this.displayDialog = false;
+    this.signupService.openLoginModal.next(false);
   }
 
-  logIn(){
-    const currentUser = new User(this.username, this.password);
-    this.signupService.login(currentUser).subscribe(
-      {
-        next: (response: string) => {
-          console.log('response logIn', response);
-          this.messageService.add({severity: 'success', summary: response});
-          this.router.navigate(['/adverts']);
-
-        },
-        error: (error: any) => {
-          this.messageService.add({severity: 'error', summary: error.error});
-          console.error(error);
-        }
-      }
-    );
+  routeOnSuccess() {
+    this.router.navigate(['/adverts']);
   }
-
 }
-
-
-
-
-
