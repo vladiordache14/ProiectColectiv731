@@ -15,14 +15,10 @@ import {MessagesModule} from "primeng/messages";
 import {ChipsModule} from "primeng/chips";
 import {PasswordModule} from "primeng/password";
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { ModificareContModule } from './modificare-cont/modificare-cont.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    First_pageComponent
-  ],
+  declarations: [AppComponent, First_pageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -35,10 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     MessagesModule,
     ChipsModule,
     PasswordModule,
-    HttpClientModule
-
+    HttpClientModule,
+    ModificareContModule,
   ],
   providers: [MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
