@@ -32,9 +32,10 @@ export class ModificareContComponent implements OnDestroy {
       .pipe(takeUntil(this.unsibscribe))
       .subscribe((value) => {
         this.displayDialog = value;
+        this.getUserDetails();
       });
 
-    this.getUserDetails();
+   
   }
 
   checkEmail() {
@@ -79,10 +80,14 @@ export class ModificareContComponent implements OnDestroy {
     const username = localStorage.getItem('username');
 
     if (username) {
+      console.log(username);
       this.modificareContService
         .GetDetaliiCont(username)
         .subscribe((response) => {
           if (response) {
+            this.role = response.role;
+            this.username = response.username;
+            this.password = response.password;
             this.email = response.email;
             this.address = response.address;
             this.phone = response.phoneNumber;
@@ -90,13 +95,13 @@ export class ModificareContComponent implements OnDestroy {
           }
         });
     }
-    this.username = 'abc';
-    this.role = '1';
+    /*this.username = 'abc';
+    this.role = 'SELLER';
     this.password = 'password';
     this.email = 'email@email.com';
     this.address = 'sample Address';
     this.phone = '0700000000';
-    this.CheckAll();
+    this.CheckAll();*/
   }
 
   private CheckAll() {

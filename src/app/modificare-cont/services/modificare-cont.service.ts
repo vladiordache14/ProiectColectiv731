@@ -22,8 +22,10 @@ export class ModificareContService {
   }
 
   public GetDetaliiCont(username: string) {
+
+    const user = {};
     return this.http.post<User>(
-      this.apiUrl + '/getCont',
+      this.apiUrl + '/getCurrentUserData',
       { username: username },
       {
         responseType: 'json',
