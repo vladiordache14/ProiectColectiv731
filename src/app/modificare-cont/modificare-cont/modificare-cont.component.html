@@ -1,6 +1,7 @@
 <p-dialog header="Update your account" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
 
 
+
   <p-messages [(value)]="messages"></p-messages>
 
   <table>
@@ -16,7 +17,8 @@
     <tr>
       <div class="form-group">
         <td><label for="username">You current Username:</label></td>
-        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control"/>
+        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" disabled="true"/>
+
         </td>
       </div>
     </tr>
