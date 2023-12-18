@@ -34,9 +34,15 @@ export class SignupService {
 
   private saveAuthenticatedFlag(state: boolean) {
     this.authenticationState.next(state);
+    localStorage.setItem('isUserAuthenticated', state.toString());
   }
 
   private getAuthenticatedFlag(): boolean {
-    return this.authenticationState.value;
+    const isAuthenticated = localStorage.getItem('isUserAuthenticated');
+    if (isAuthenticated === 'true') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

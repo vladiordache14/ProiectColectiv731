@@ -19,7 +19,6 @@ export class First_pageComponent implements OnDestroy {
 
   logInPopup() {
     this.signupService.openLoginModal.next(true);
-    console.log(this.signupService.authenticationState);
     this.signupService.authenticationState
       .pipe(
         takeWhile((value) => value == false, true),
@@ -31,7 +30,6 @@ export class First_pageComponent implements OnDestroy {
       )
 
       .subscribe((value) => {
-        console.log('sadasdas');
         if (value === true) {
           this.hideDialog();
           this.routeOnSuccess();
