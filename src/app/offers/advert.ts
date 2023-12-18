@@ -8,9 +8,9 @@ export class Advert {
   price: number;
   photos: Photo[];
   seller: User;
-  isPromoted: boolean;
-  isBlocked: boolean;
-  isActive: boolean;
+  promoted: boolean;
+  blocked: boolean;
+  active: boolean;
   selectedIndex: number;
 
   constructor(advertId: number, name: string, description: string, price: number, photos: Photo[], seller: User, isPromoted: boolean,
@@ -21,9 +21,9 @@ export class Advert {
     this.price = price;
     this.photos = photos;
     this.seller = seller;
-    this.isPromoted = isPromoted;
-    this.isBlocked = isBlocked;
-    this.isActive = isActive;
+    this.promoted = isPromoted;
+    this.blocked = isBlocked;
+    this.active = isActive;
     this.selectedIndex = 0;
   }
 }

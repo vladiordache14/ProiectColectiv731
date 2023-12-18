@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Advert } from "../advert";
 import { AdvertService } from "../service/advert.service";
 import { MatDialog } from "@angular/material/dialog";
@@ -53,5 +53,10 @@ export class AdvertsComponent implements OnInit {
       width: '55%',
       data: storedCartData ? JSON.parse(storedCartData) : []
     });
+    this.updateAdverts();
+  }
+
+  updateAdverts(): void {
+    this.advertService.triggerAdvertUpdate();
   }
 }
