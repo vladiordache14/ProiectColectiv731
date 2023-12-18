@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.signupService.login(currentUser).subscribe({
       next: (response: string) => {
         this.messageService.add({ severity: 'success', summary: response });
+        localStorage.setItem('username', this.username)
       },
       error: (error: any) => {
         this.messageService.add({ severity: 'error', summary: error.error });
