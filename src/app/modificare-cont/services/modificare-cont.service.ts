@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/model/user';
 
@@ -8,6 +9,10 @@ import { User } from 'src/app/model/user';
 export class ModificareContService {
   public modificareContDialogState = new BehaviorSubject<boolean>(false);
 
+  private apiUrl = 'http://localhost:8080/users'; // Update with your backend URL
+
+  private http = inject(HttpClient);
+
   public OpenModificareCont() {
     this.modificareContDialogState.next(true);
   }
@@ -16,35 +21,19 @@ export class ModificareContService {
     this.modificareContDialogState.next(false);
   }
 
-  public SaveChanges(UserModified: User) {
-    /*
-    if (this.fieldsValid()) {
-      const currentUser = new User(this.username, this.password, this.email, this.selectedRole.toString(), this.address, this.phone)
+  public GetDetaliiCont(username: string) {
+    return this.http.post<User>(
+      this.apiUrl + '/getCont',
+      { username: username },
+      {
+        responseType: 'json',
+      }
+    );
+  }
 
-      this.signupService.signup(currentUser, {responseType: 'text'}).subscribe(
-        {
-          next: (response: string) => {
-            this.messageService.add({severity: 'success', summary: response});
-            this.username="";
-            this.usernameInvalid=true;
-            this.password="";
-            this.passwordInvalid=true;
-            this.email="";
-            this.emailInvalid = true;
-            this.selectedRole="";
-            this.roleInvalid = true;
-            this.address="";
-            this.addressInvalid = false;
-            this.phone="";
-            this.phoneInvalid=false;
-            console.log(response);
-          },
-          error: (error: any) => {
-            this.messageService.add({severity: 'error', summary: error.error});
-            console.error(error);
-          },
-        }
-      );
-    }*/
+  public SaveChanges(UserModified: Partial<User>) {
+    return this.http.post(this.apiUrl + '/update', UserModified, {
+      responseType: 'text',
+    });
   }
 }

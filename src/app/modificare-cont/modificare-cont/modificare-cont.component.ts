@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { ModificareContService } from '../services/modificare-cont.service';
 import { Subject, takeUntil } from 'rxjs';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-modificare-cont',
@@ -14,20 +15,26 @@ export class ModificareContComponent implements OnDestroy {
   address: string = '';
   phone: string = '';
   messages: any[] = []; // Array to store messages
+  role: string = '';
+  username: string = '';
+  password: string = '';
 
   emailInvalid: boolean = true;
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
   public modificareContService = inject(ModificareContService);
+  public messageService = inject(MessageService);
   private unsibscribe = new Subject();
 
-  constructor(private messageService: MessageService) {
+  constructor() {
     this.modificareContService.modificareContDialogState
       .pipe(takeUntil(this.unsibscribe))
       .subscribe((value) => {
         this.displayDialog = value;
       });
+
+    this.getUserDetails();
   }
 
   checkEmail() {
@@ -68,7 +75,63 @@ export class ModificareContComponent implements OnDestroy {
     return true;
   }
 
-  saveUser() {}
+  getUserDetails() {
+    const username = localStorage.getItem('username');
+
+    if (username) {
+      this.modificareContService
+        .GetDetaliiCont(username)
+        .subscribe((response) => {
+          if (response) {
+            this.email = response.email;
+            this.address = response.address;
+            this.phone = response.phoneNumber;
+            this.CheckAll();
+          }
+        });
+    }
+    this.username = 'abc';
+    this.role = '1';
+    this.password = 'password';
+    this.email = 'email@email.com';
+    this.address = 'sample Address';
+    this.phone = '0700000000';
+    this.CheckAll();
+  }
+
+  private CheckAll() {
+    this.checkAddress();
+    this.checkEmail();
+    this.checkPhone();
+  }
+
+  saveUser() {
+    if (this.fieldsValid()) {
+      const user = {
+        username: this.username,
+        role: this.role,
+        password: this.password,
+        email: this.email,
+        address: this.address,
+        phoneNumber: this.phone,
+      };
+      this.modificareContService.SaveChanges(user).subscribe({
+        next: (response: string) => {
+          if (response === 'User updated successfully!') {
+            this.messageService.add({ severity: 'success', summary: response });
+            this.modificareContService.CloseModificareCont();
+          }
+        },
+        error: (error: any) => {
+          console.log(error);
+          this.messageService.add({
+            severity: 'error',
+            summary: error.message,
+          });
+        },
+      });
+    }
+  }
 
   ngOnDestroy(): void {
     this.unsibscribe.next('');

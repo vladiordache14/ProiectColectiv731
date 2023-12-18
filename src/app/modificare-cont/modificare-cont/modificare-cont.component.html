@@ -7,6 +7,29 @@
 
     <tr>
       <div class="form-group">
+        <td><label for="role">Role:</label></td>
+        <td><input type="text" id="username" [(ngModel)]="role" pInputText class="form-control" disabled="true"/>
+        </td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="username">Username:</label></td>
+        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" disabled="true"/>
+        </td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" />
+      </div>
+    </tr>
+    
+    <tr>
+      <div class="form-group">
         <td><label for="email">*Email:</label></td>
         <td><input type="email" id="email" [(ngModel)]="email" pInputText class="form-control" (input)="checkEmail()" />
           <div *ngIf="emailInvalid" class="error-message">
@@ -14,8 +37,6 @@
           </div></td>
       </div>
     </tr>
-
-
 
     <tr>
       <div class="form-group">

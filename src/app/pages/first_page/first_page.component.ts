@@ -11,4 +11,13 @@ import { ModificareContService } from 'src/app/modificare-cont/services/modifica
 })
 export class First_pageComponent {
   constructor(public modificareContService: ModificareContService) {}
+
+  public updateCont() {
+    if (localStorage.getItem('isUserAuthenticated') === 'true') {
+      this.modificareContService.OpenModificareCont();
+    } else {
+      //AuthenticationService.OpenLoginModal();
+    }
+  }
 }
+
