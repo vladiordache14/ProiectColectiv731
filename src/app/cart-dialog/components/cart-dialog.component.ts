@@ -22,9 +22,9 @@ export class CartDialogComponent {
   updateInactiveAdverts(): void {
     this.advertService.getActiveAdverts()
       .subscribe((activeAdverts: Advert[]) => {
-        let activeAdvertIds = activeAdverts.map(advert => advert.advertId);
+        let activeAdvertIds = activeAdverts.map(advert => advert.id);
         for (let advert of this.data) {
-          advert.active = activeAdvertIds.includes(advert.advertId);
+          advert.isActive = activeAdvertIds.includes(advert.id);
         }
       })
   }

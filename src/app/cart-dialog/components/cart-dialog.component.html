@@ -7,10 +7,10 @@
 </div>
 <br>
 <div class="cart-container">
-  <div *ngFor="let advert of data" [ngClass]="{'inactive_advert': !advert.active}">
+  <div *ngFor="let advert of data" [ngClass]="{'inactive_advert': !advert.isActive}">
     <div class="advert-item">
       <h2 class="advert-title">{{ advert.name }}
-        <span *ngIf="!advert.active"> - INACTIVE </span>
+        <span *ngIf="!advert.isActive"> - INACTIVE </span>
       </h2>
       <div class="advert-details">
         <div *ngIf="advert.photos.length > 0" class="carousel-container">

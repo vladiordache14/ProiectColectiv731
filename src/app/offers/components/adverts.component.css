@@ -152,7 +152,7 @@ body {
 
 .cart-button {
   position: fixed;
-  top: 10px; /* Adjust the top position as needed */
+  top: 30px; /* Adjust the top position as needed */
   left: 10px; /* Adjust the right position as needed */
   background-color: #8f1a07;
   border: 1px solid #8f1a07; /* Set the border color to #8f1a07 */
