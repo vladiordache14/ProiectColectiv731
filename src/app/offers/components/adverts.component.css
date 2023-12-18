@@ -90,13 +90,6 @@ body {
   border-radius: 5px;
   cursor: pointer;
   font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.add-icon-container {
-  margin-right: 8px;
 }
 
 .carousel-container {
@@ -145,6 +138,16 @@ body {
 
 .active, .dot:hover {
   opacity: 1;
+}
+
+.unusable{
+  display: none;
+  pointer-events: none;
+}
+
+.usable{
+  display: block;
+  pointer-events: all;
 }
 
 .cart-button {
