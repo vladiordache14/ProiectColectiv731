@@ -24,12 +24,14 @@ import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
 import {First_pageModule} from "./offers/module/first_page.module";
 import {First_pageRoutingModule} from "./offers/first_page-routing.module";
 import {AdvertsModule} from "./offers/module/adverts.module";
+import {LogoutButtonComponent} from "./offers/components/logout-button/logout-button.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AdvertsComponent,
     ToggleButtonComponent,
+    LogoutButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
 
@@ -41,7 +43,9 @@ import {AdvertsModule} from "./offers/module/adverts.module";
     BrowserAnimationsModule,
     First_pageModule,
     AdvertsModule,
-    RouterModule
+    RouterModule,
+    DialogModule,
+    ButtonModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]

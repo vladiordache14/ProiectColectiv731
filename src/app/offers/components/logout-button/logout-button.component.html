@@ -1,0 +1,7 @@
+<p-button label="Logout" (onClick)="showLogoutPopup()" class="logoutButton"></p-button>
+<p-dialog header="Are you sure you want to logout?" [(visible)]="logoutPopup" [modal]="true" [responsive]="true" [style]="{width: '350px'}">
+  <p-footer>
+    <button pButton type="button" (click)="onNoClick()" label="No" class="p-button-secondary"></button>
+    <button pButton type="button" (click)="onYesClick()" label="Yes" class="p-button-primary"></button>
+  </p-footer>
+</p-dialog>
