@@ -6,14 +6,14 @@ export class Advert {
   name: string;
   description: string;
   price: number;
-  photos: Photo[];
+  photos: File[];
   seller: User;
   isPromoted: boolean;
   isBlocked: boolean;
   isActive: boolean;
   selectedIndex: number;
 
-  constructor(advertId: number, name: string, description: string, price: number, photos: Photo[], seller: User, isPromoted: boolean,
+  constructor(advertId: number, name: string, description: string, price: number, photos: File[], seller: User, isPromoted: boolean,
               isBlocked: boolean, isActive: boolean) {
     this.advertId = advertId;
     this.name = name;
