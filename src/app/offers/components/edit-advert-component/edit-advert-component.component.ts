@@ -14,13 +14,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./edit-advert-component.component.css']
 })
 export class EditAdvertComponentComponent {
-  advert!: Advert;
+  advert: Advert | null = null;
   //advert: Advert;
   isEditing: boolean = false;
 
   constructor(    private route: ActivatedRoute,
                   private advertService: AdvertService,
-                  private router: Router) {}
+                  private router: Router) {
+
+  }
 
 
   /*ngOnInit(): void {
@@ -36,10 +38,12 @@ export class EditAdvertComponentComponent {
 
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    /*this.route.params.subscribe(params => {
       const advertId = +params['advertId'];
       this.fetchAdvertData(advertId);
-    });
+    });*/
+    this.advertService.advertToBeEdited$
+      .subscribe(advert => { console.log("Hello"); this.advert = advert; });
   }
 
 
@@ -68,9 +72,11 @@ export class EditAdvertComponentComponent {
 
   saveChanges(): void {
     // Call your service to update the advert data
-    this.advertService.updateAdvert(this.advert).subscribe(() => {
-      window.history.back(); // Navigate back to the previous page
-    });
+    if (this.advert != null) {
+      this.advertService.updateAdvert(this.advert!).subscribe(() => {
+        window.history.back(); // Navigate back to the previous page
+      });
+    }
 
     // Disable editing after saving changes
     this.isEditing = false;

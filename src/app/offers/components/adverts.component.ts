@@ -98,6 +98,7 @@ export class AdvertsComponent implements OnInit{
 
   editAdvert(advert: Advert): void {
     // Navigate to the edit page with the entire advert object as a parameter
+    this.advertService.setAdvertBeingEdited(advert);
     this.router.navigate(['editAdvert'], { state: { advertId: advert.advertId } });
   }
 

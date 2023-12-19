@@ -8,17 +8,19 @@ import {ConfirmationDialogService} from "../components/confirmation-dialog.servi
 import {AppModule} from "../../app.module";
 import {ConfirmationDialogComponent} from "../components/confirmation-dialog/confirmation-dialog.component";
 import {EditAdvertComponentComponent} from "../components/edit-advert-component/edit-advert-component.component";
+import {EditAdvertComponentModule} from "../components/edit-advert-component/edit-advert-component.module";
 
 @NgModule({
   declarations: [
     AdvertsComponent,
     ConfirmationDialogComponent
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    HttpClientModule,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        HttpClientModule,
+        EditAdvertComponentModule,
+    ],
   providers: [
     AdvertService
   ],

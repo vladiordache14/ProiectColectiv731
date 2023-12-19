@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {catchError, map, Observable, Subject, throwError} from "rxjs";
 import {Advert} from "../advert";
 
 @Injectable({
@@ -9,6 +9,10 @@ import {Advert} from "../advert";
 export class AdvertService {
   private apiUrl = 'http://localhost:8080';
   constructor(private http: HttpClient, ) { }
+
+  private advertToBeEdited: Subject<Advert> = new Subject<Advert>();
+
+  advertToBeEdited$ = this.advertToBeEdited.asObservable()
 
   getActiveAdverts(): Observable<Advert[]> {
     return this.http.get<Advert[]>("http://localhost:8080/adverts/active").pipe(
@@ -43,4 +47,7 @@ export class AdvertService {
     return this.http.put<Advert>(url, updatedAdvert);
   }
 
+  setAdvertBeingEdited(advert: Advert) {
+    this.advertToBeEdited.next(advert);
+  }
 }

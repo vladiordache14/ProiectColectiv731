@@ -7,13 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { EditAdvertComponentComponent } from './edit-advert-component.component';
 
 @NgModule({
-  declarations: [
-    EditAdvertComponentComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule
-    // Add other modules as needed
-  ],
+    declarations: [
+        EditAdvertComponentComponent
+    ],
+    imports: [
+        CommonModule,
+        FormsModule
+        // Add other modules as needed
+    ],
+    exports: [
+        EditAdvertComponentComponent
+    ]
 })
 export class EditAdvertComponentModule { }
