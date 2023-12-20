@@ -6,14 +6,12 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LogoutService {
 
-  private apiUrl = 'http://localhost:8080/users/logout'; // Update with your backend URL
-
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   logout(): void {
     console.log('User logged out');
+    localStorage.removeItem('username');
     // Implement logout logic here, such as clearing authentication tokens, user data, etc.
-    this.http.post(this.apiUrl,"");
   }
 
 }

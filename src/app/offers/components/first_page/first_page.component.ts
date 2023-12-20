@@ -129,7 +129,6 @@ export class First_pageComponent {
             this.addressInvalid = false;
             this.phone = "";
             this.phoneInvalid = false;
-            this.router.navigate(['/page-one'])
             console.log(response);
           },
           error: (error: any) => {
