@@ -24,6 +24,10 @@ import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
 import {First_pageModule} from "./offers/module/first_page.module";
 import {First_pageRoutingModule} from "./offers/first_page-routing.module";
 import {AdvertsModule} from "./offers/module/adverts.module";
+import {MatIconModule} from "@angular/material/icon";
+import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,7 @@ import {AdvertsModule} from "./offers/module/adverts.module";
     ToggleButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
-
+    CartDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,10 @@ import {AdvertsModule} from "./offers/module/adverts.module";
     BrowserAnimationsModule,
     First_pageModule,
     AdvertsModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule,
+    MatIconModule,
+    AdvertsRoutingModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]
