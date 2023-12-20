@@ -24,6 +24,10 @@ import {AdvertsRoutingModule} from "./offers/adverts-routing.module";
 import {First_pageModule} from "./offers/module/first_page.module";
 import {First_pageRoutingModule} from "./offers/first_page-routing.module";
 import {AdvertsModule} from "./offers/module/adverts.module";
+import {MatIconModule} from "@angular/material/icon";
+import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+
 import {LogoutButtonComponent} from "./offers/components/logout-button/logout-button.component";
 
 @NgModule({
@@ -34,7 +38,7 @@ import {LogoutButtonComponent} from "./offers/components/logout-button/logout-bu
     LogoutButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
-
+    CartDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,11 @@ import {LogoutButtonComponent} from "./offers/components/logout-button/logout-bu
     AdvertsModule,
     RouterModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    RouterModule,
+    MatDialogModule,
+    MatIconModule,
+    AdvertsRoutingModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]

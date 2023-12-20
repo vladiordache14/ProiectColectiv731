@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'adverts',
     loadChildren: () => import('./offers/module/adverts.module').then(m => m.AdvertsModule),
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./offers/module/adverts.module').then(m => m.AdvertsModule),
+  },
+
   // {
   //   path: '**',
   //   redirectTo: 'adverts',
