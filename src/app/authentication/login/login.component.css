@@ -1,0 +1,12 @@
+.form-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    width: 100%;
+    font-size: 1.3em;
+    height: 30px; /* Adjust the height as needed for consistency */
+  }
