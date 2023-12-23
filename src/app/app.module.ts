@@ -23,14 +23,10 @@ import { AdvertsRoutingModule } from './offers/adverts-routing.module';
 import { First_pageModule } from './offers/module/first_page.module';
 import { First_pageRoutingModule } from './offers/first_page-routing.module';
 import { AdvertsModule } from './offers/module/adverts.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToggleButtonComponent,
-    PageTwoComponent,
-    ModifyAndDeactivateButtonsComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -39,6 +35,7 @@ import { AdvertsModule } from './offers/module/adverts.module';
     First_pageModule,
     AdvertsModule,
     RouterModule,
+    AuthenticationModule,
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent],

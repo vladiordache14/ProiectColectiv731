@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   logIn() {
-    const currentUser = new User(this.username, this.password);
+    const currentUser = new User(this.username, this.password, '', '', '', '');
     this.signupService.login(currentUser).subscribe({
       next: (response: string) => {
         this.messageService.add({ severity: 'success', summary: response });
