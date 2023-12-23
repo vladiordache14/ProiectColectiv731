@@ -4,6 +4,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { RouterModule, Routes } from '@angular/router';
 import { First_pageComponent } from './offers/components/first_page/first_page.component';
+import { AuthGuard } from './authentication/guards/auth-guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path: 'adverts',
     loadChildren: () =>
-      import('./offers/module/adverts.module').then((m) => m.AdvertsModule),
+      import('./offers/module/adverts.module').then((m) => m.AdvertsModule), canActivate: [AuthGuard('adverts')]
   },
   // {
   //   path: '**',

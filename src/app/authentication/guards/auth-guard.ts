@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 import { SignupService } from '../services/signup.service';
-import { filter, switchMap, takeUntil, takeWhile } from 'rxjs';
+import { filter, takeUntil, takeWhile } from 'rxjs';
 
-export function featureFlagGuard(intiialRoute: string): CanActivateFn {
+export function AuthGuard(intialRoute: string): CanActivateFn {
   return () => {
     const signupService = inject(SignupService);
     const router: Router = inject(Router);
@@ -21,7 +21,7 @@ export function featureFlagGuard(intiialRoute: string): CanActivateFn {
         .subscribe((state) => {
           if (state) {
             signupService.openLoginModal.next(false);
-            router.navigate([intiialRoute]);
+            router.navigate([intialRoute]);
           }
         });
       router.navigate(['/']);
