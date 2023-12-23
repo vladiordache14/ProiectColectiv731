@@ -31,6 +31,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ModificareContModule } from './modificare-cont/modificare-cont.module';
 
 import {AuthenticationModule} from "./authentication/authentication.module";
+import {LogoutButtonComponent} from "./offers/components/logout-button/logout-button.component";
 
 
 
@@ -41,7 +42,8 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     ToggleButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
-    CartDialogComponent
+    CartDialogComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,9 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     MatIconModule,
     AdvertsRoutingModule,
     ModificareContModule,
-    AuthenticationModule
+    AuthenticationModule,
+    ButtonModule,
+    DialogModule
 
   ],
   providers: [MessageService, ToggleService],
