@@ -1,7 +1,12 @@
-.createAccountButton{
+.createAccountButton {
   position: absolute;
   top: 15px;
   right: 30px;
+}
+.logInButton{
+  position: absolute;
+  top: 15px;
+  right: 200px;
 }
 
 .center-popup {
@@ -38,7 +43,3 @@ tr td {
 .mandatory, .error-message{
   color: red;
 }
-
-
-
-

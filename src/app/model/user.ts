@@ -1,6 +1,7 @@
 
 export class User {
 
+
   id: number | undefined;
   username: string = '';
   password: string = '';
@@ -19,5 +20,6 @@ export class User {
     this.address = address;
     this.phoneNumber = phoneNumber;
   }
+
 
 }
