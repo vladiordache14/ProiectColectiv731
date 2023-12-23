@@ -95,13 +95,6 @@ export class ModificareContComponent implements OnDestroy {
           }
         });
     }
-    /*this.username = 'abc';
-    this.role = 'SELLER';
-    this.password = 'password';
-    this.email = 'email@email.com';
-    this.address = 'sample Address';
-    this.phone = '0700000000';
-    this.CheckAll();*/
   }
 
   private CheckAll() {

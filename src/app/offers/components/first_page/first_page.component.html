@@ -1,5 +1,6 @@
 <html [ngStyle]="{'background-image': 'url(\'assets/mainImg.png\')','background-repeat': 'no-repeat', 'height':'710px', 'width':'1570px', 'background-size': '100% 100%' }">
-  <p-button label="Update account" (onClick)="updateCont()" class="createAccountButton"></p-button>
+
+  <p-button label="Update account" (onClick)="updateCont()" class="updateAccountButton"></p-button>
   <p-button label="Create account" (onClick)="createAccountPopup()" class="createAccountButton"></p-button>
 
   <p-dialog header="Create your account" [(visible)]="displayDialog1" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">

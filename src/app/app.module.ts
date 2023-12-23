@@ -24,6 +24,7 @@ import { AdvertsRoutingModule } from './offers/adverts-routing.module';
 import { First_pageModule } from './offers/module/first_page.module';
 import { First_pageRoutingModule } from './offers/first_page-routing.module';
 import { AdvertsModule } from './offers/module/adverts.module';
+import { ModificareContModule } from './modificare-cont/modificare-cont.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AdvertsModule } from './offers/module/adverts.module';
     First_pageModule,
     AdvertsModule,
     RouterModule,
+    ModificareContModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent],
