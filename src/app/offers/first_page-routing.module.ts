@@ -16,7 +16,7 @@ const routes: Routes = [
     CommonModule,
     ButtonModule,
     DialogModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
   ],
   exports: [RouterModule]
 })

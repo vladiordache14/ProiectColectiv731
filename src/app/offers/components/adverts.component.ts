@@ -3,6 +3,8 @@ import {Advert} from "../advert";
 import {AdvertService} from "../service/advert.service";
 import { ElementRef } from '@angular/core';
 import { DataSharingService } from '../service/data-sharing.service';
+import { MatDialog } from "@angular/material/dialog";
+import { CartDialogComponent } from "../../cart-dialog/components/cart-dialog.component";
 
 @Component({
   selector: 'app-adverts',
@@ -13,12 +15,18 @@ import { DataSharingService } from '../service/data-sharing.service';
 export class AdvertsComponent implements OnInit, AfterContentChecked{
   adverts: Advert[] = [];
   counter = 0;
+  advertsInCart: Advert[] = [];
+  public cartDataKey = 'cartData';
 
-  constructor(private dataSharingService: DataSharingService, 
+  constructor(private dataSharingService: DataSharingService,
     private advertService: AdvertService,
-     private el: ElementRef) { }
+     private el: ElementRef, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+
+    // Clear the localStorage when the page is refreshed
+    localStorage.removeItem(this.cartDataKey);
+
     this.advertService.getActiveAdverts().subscribe(adverts => {
       for (let advert of adverts) {
         advert.selectedIndex = 0;
@@ -49,10 +57,10 @@ export class AdvertsComponent implements OnInit, AfterContentChecked{
       // Handle cases where the original string is too short
       return originalString + appendString;
     }
-  
+
     const prefix = originalString.slice(0, -6); // Get the first (length - 6) characters
     const suffix = originalString.slice(-6);    // Get the last 6 characters
-  
+
     return prefix + appendString + suffix;
   }
 
@@ -69,16 +77,41 @@ export class AdvertsComponent implements OnInit, AfterContentChecked{
     console.log(filteredElementsArray);
     // Create a document fragment to hold the elements
     const fragment = document.createDocumentFragment();
-  
+
     // Add filtered elements to the fragment
     filteredElementsArray.forEach((element) => {
       fragment.appendChild(element.cloneNode(true));
     });
-    
+
     // Convert the fragment to HTMLCollection
     const filteredElementsCollection = fragment.children as HTMLCollectionOf<HTMLElement>;
-    
+
     return filteredElementsCollection;
   }
-  
+
+  addToCart(advert: Advert) {
+    this.loadCartData();
+    // Adding a copy to the cart
+    this.advertsInCart.push({ ...advert });
+    localStorage.setItem(this.cartDataKey, JSON.stringify(this.advertsInCart));
+  }
+
+  private loadCartData() {
+    const storedCartData = localStorage.getItem(this.cartDataKey);
+    this.advertsInCart = storedCartData ? JSON.parse(storedCartData) : [];
+  }
+
+  openCartDialog(): void {
+    const storedCartData = localStorage.getItem(this.cartDataKey);
+    // Pass the data from localStorage to the dialog
+    this.dialog.open(CartDialogComponent, {
+      width: '55%',
+      data: storedCartData ? JSON.parse(storedCartData) : []
+    });
+    this.updateAdverts();
+  }
+
+  updateAdverts(): void {
+    this.advertService.triggerAdvertUpdate();
+  }
 }

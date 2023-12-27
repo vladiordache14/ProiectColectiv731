@@ -2,6 +2,9 @@
   <app-toggle-button class="toggle-button"></app-toggle-button>
   <app-md-buttons class="unusable"></app-md-buttons>
 <div>
+  <button class="cart-button" (click)="openCartDialog()">
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
   <div class="adverts-container" *ngFor="let advert of adverts">
     <div class="advert-item">
       <h2 class="advert-title"> {{ advert.name }}</h2>
@@ -23,7 +26,12 @@
           <p class="advert-seller-username"> {{ advert.seller.username}} </p>
           <div *ngIf="advert.seller.phoneNumber"> {{ advert.seller.phoneNumber}} </div>
           <p class="advert-price"> {{ advert.price }} € </p>
-          <button class="buy-button usable"> Buy</button>
+          <button class="buy-button usable" (click)="addToCart(advert)">
+            <span class="add-icon-container">
+              <mat-icon>add_circle_outline</mat-icon>
+            </span>
+            Add to cart
+          </button>
         </div>
       </div>
     </div>

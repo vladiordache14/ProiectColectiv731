@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'ProiectColectiv731Frontend';
   constructor(private router: Router){
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
   }
 
 }
