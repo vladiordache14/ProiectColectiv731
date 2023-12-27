@@ -35,7 +35,7 @@
         <td><label for="email">*Email:</label></td>
         <td><input type="email" id="email" [(ngModel)]="email" pInputText class="form-control" (input)="checkEmail()" />
           <div *ngIf="emailInvalid" class="error-message">
-            required form: "@"+domain name+".com"
+            required form: "&#64;"+domain name+".com"
           </div></td>
       </div>
     </tr>
