@@ -3,12 +3,13 @@ import { MessageService } from 'primeng/api';
 import {User} from "../../../model/user";
 import {SignupService} from "./signup.service";
 import {Router} from "@angular/router";
+import { ModificareContService } from 'src/app/modificare-cont/services/modificare-cont.service';
 
 
 @Component({
   selector: 'app-first_page',
   templateUrl: './first_page.component.html',
-  styleUrls: ['./first_page.component.css']
+  styleUrls: ['./first_page.component.css'],
 })
 export class First_pageComponent {
 
@@ -31,7 +32,7 @@ export class First_pageComponent {
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
-  constructor(private messageService: MessageService, private signupService: SignupService, private router:Router) {
+  constructor(private messageService: MessageService, private signupService: SignupService, private router:Router, private modificareContService : ModificareContService) {
   }
 
   checkUsername() {
@@ -171,5 +172,13 @@ export class First_pageComponent {
       }
     );
   }
+  public updateCont() {
+    if (localStorage.getItem('isUserAuthenticated') === 'true') {
+      this.modificareContService.OpenModificareCont();
+    } else {
+      //AuthenticationService.OpenLoginModal();
+    }
+  }
 
 }
+
