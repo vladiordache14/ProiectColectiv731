@@ -77,7 +77,7 @@ saveAdvert(advertData: AdvertRequest) {
     this.advertService.addAdvert(formData).subscribe(
         (response) => {
             console.log('Advert added:', response);
-            this.openDialog();
+            this.dialogRef.close();
         }
     );
 }
