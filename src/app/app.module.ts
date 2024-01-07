@@ -54,9 +54,7 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     MatDialogModule,
     MatIconModule,
     AdvertsRoutingModule,
-
-    ModificareContModule
-
+    ModificareContModule,
     AuthenticationModule
 
   ],
