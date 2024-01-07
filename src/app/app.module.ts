@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {AdvertsComponent} from "./offers/components/adverts.component";
+import { AdvertsComponent } from './offers/components/adverts.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-button.component';
@@ -27,7 +27,11 @@ import {AdvertsModule} from "./offers/module/adverts.module";
 import {MatIconModule} from "@angular/material/icon";
 import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+
+import { ModificareContModule } from './modificare-cont/modificare-cont.module';
+
 import {AuthenticationModule} from "./authentication/authentication.module";
+
 
 
 @NgModule({
@@ -50,7 +54,11 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     MatDialogModule,
     MatIconModule,
     AdvertsRoutingModule,
+
+    ModificareContModule
+
     AuthenticationModule
+
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]

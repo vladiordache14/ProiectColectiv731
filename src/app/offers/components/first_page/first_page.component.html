@@ -1,6 +1,6 @@
 <html [ngStyle]="{'background-image': 'url(\'assets/mainImg.png\')','background-repeat': 'no-repeat', 'height':'710px', 'width':'1570px', 'background-size': '100% 100%' }">
 
-
+  <p-button label="Update account" (onClick)="updateCont()" class="updateAccountButton"></p-button>
   <p-button label="Create account" (onClick)="createAccountPopup()" class="createAccountButton"></p-button>
 
   <p-dialog header="Create your account" [(visible)]="displayDialog1" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
@@ -80,40 +80,6 @@
     </p-footer>
 
   </p-dialog>
-=======
-<html [ngStyle]="{'background-image': 'url(\'assets/mainImg.png\')','background-repeat': 'no-repeat', 'height':'710px', 'width':'1570px', 'background-size': '100% 100%' }">
 
-
-<p-button label="Log in" (onClick)="logInPopup()" class="logInButton"></p-button>
-
-<p-dialog header="Enter your username and password" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
-  <!-- Content of your popup goes here -->
-
-  <p-messages [(value)]="messages"></p-messages>
-
-  <table>
-    <tr>
-      <div class="form-group">
-        <td><label for="username">*Username:</label></td>
-        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" />
-        </td>
-      </div>
-    </tr>
-
-    <tr>
-      <div class="form-group">
-        <td><label for="password">*Password:</label></td>
-        <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" />
-      </div>
-    </tr>
-  </table>
-
-  <p-footer>
-    <button pButton type="button" label="Log in" (click)="logIn()" class="p-button-secondary"></button>
-    <button pButton type="button" label="Reset password" class="p-button-secondary"></button>
-    <button pButton type="button" label="Cancel" (click)="hideDialog()" class="p-button-secondary"></button>
-  </p-footer>
-
-</p-dialog>
-
+ 
 </html>
