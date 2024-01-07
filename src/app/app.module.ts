@@ -27,6 +27,7 @@ import {AdvertsModule} from "./offers/module/adverts.module";
 import {MatIconModule} from "@angular/material/icon";
 import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import {AuthenticationModule} from "./authentication/authentication.module";
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     RouterModule,
     MatDialogModule,
     MatIconModule,
-    AdvertsRoutingModule
+    AdvertsRoutingModule,
+    AuthenticationModule
   ],
   providers: [MessageService, ToggleService],
   bootstrap: [AppComponent]
