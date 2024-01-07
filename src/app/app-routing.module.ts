@@ -9,16 +9,17 @@ import { AuthGuard } from './authentication/guards/auth-guard';
 const routes: Routes = [
   {
     path: 'first_page',
-    loadChildren: () =>
-      import('./offers/module/first_page.module').then(
-        (m) => m.First_pageModule
-      ),
+    loadChildren: () => import('./offers/module/first_page.module').then(m => m.First_pageModule)
   },
   {
     path: 'adverts',
-    loadChildren: () =>
-      import('./offers/module/adverts.module').then((m) => m.AdvertsModule), canActivate: [AuthGuard('adverts')]
+    loadChildren: () => import('./offers/module/adverts.module').then(m => m.AdvertsModule),
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./offers/module/adverts.module').then(m => m.AdvertsModule),
+  },
+
   // {
   //   path: '**',
   //   redirectTo: 'adverts',
@@ -28,6 +29,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    DialogModule,
+    RouterModule.forRoot(routes),
+  ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
