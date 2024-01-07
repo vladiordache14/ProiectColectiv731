@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, map, Observable, throwError} from "rxjs";
+import {BehaviorSubject, catchError, map, Observable, switchMap, throwError} from "rxjs";
 import { Advert } from '../model/advert';
 
   const httpOptions = {
@@ -48,6 +48,6 @@ export class AdvertService {
 
 
 addAdvert(advert: FormData): Observable<Advert> {
-  return this.http.post<Advert>("http://localhost:8080/advert", advert)
+  return this.http.post<Advert>("http://localhost:8080/adverts/create", advert)
 }
 }

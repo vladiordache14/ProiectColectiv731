@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Advert } from "../../offers/advert";
+import { Advert } from 'src/app/offers/model/advert';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { AdvertService } from "../../offers/service/advert.service";
 

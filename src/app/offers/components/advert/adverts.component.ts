@@ -1,10 +1,10 @@
 import {AfterContentChecked, AfterViewChecked, AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {Advert} from "../advert";
-import {AdvertService} from "../service/advert.service";
+import { Advert } from '../../model/advert';
+import { AdvertService } from '../../service/advert.service';
 import { ElementRef } from '@angular/core';
-import { DataSharingService } from '../service/data-sharing.service';
+import { DataSharingService } from '../../service/data-sharing.service';
 import { MatDialog } from "@angular/material/dialog";
-import { CartDialogComponent } from "../../cart-dialog/components/cart-dialog.component";
+import { CartDialogComponent } from 'src/app/cart-dialog/components/cart-dialog.component';
 
 @Component({
   selector: 'app-adverts',
