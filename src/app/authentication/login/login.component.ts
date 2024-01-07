@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.subscriptionEnd))
       .subscribe((value) => {
         this.dialogState = value;
+        this.messages = [];
       });
   }
 
