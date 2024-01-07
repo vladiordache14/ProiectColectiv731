@@ -6,6 +6,7 @@ import { AdvertService } from '../../service/advert.service';
 import { AdvertsComponent } from '../advert/adverts.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AdvertRequest } from '../../model/advertRequest';
+import { UserDataService } from '../../service/user-data.service';
 
 @Component({
   selector: 'app-create-advert',
@@ -20,6 +21,7 @@ export class CreateAdvertComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private advertService: AdvertService,
+    private userDataService: UserDataService,
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<CreateAdvertComponent>
   ) {}

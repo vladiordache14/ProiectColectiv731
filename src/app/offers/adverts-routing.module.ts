@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {RouterModule, Routes} from "@angular/router";
 import { PageTwoComponent } from './components/page-two/page-two.component';
-import {AdvertsComponent} from "./components/adverts.component";
+import { AdvertsComponent } from './components/advert/adverts.component';
 
 
 

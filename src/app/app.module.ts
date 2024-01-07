@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {AdvertsComponent} from "./offers/components/advert/adverts.component";
-import { AdvertsComponent } from './offers/components/adverts.component';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-button.component';
@@ -35,7 +34,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ConfirmDialogComponent } from './offers/components/confirm-dialog/confirm-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
 
 import { ModificareContModule } from './modificare-cont/modificare-cont.module';
 
@@ -50,7 +48,9 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     ToggleButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
-    CartDialogComponent
+    CartDialogComponent,
+    NavbarComponent,
+    CreateAdvertComponent
   ],
   imports: [
     BrowserModule,
@@ -75,8 +75,7 @@ import {AuthenticationModule} from "./authentication/authentication.module";
     MatInputModule,
     MatButtonModule,
     ButtonModule,
-    DialogModule
-
+    DialogModule,
     AdvertsRoutingModule,
     ModificareContModule,
     AuthenticationModule
