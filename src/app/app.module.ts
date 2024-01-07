@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {AdvertsComponent} from "./offers/components/adverts.component";
+import { AdvertsRoutingModule } from './offers/adverts-routing.module';
+import {AdvertsComponent} from "./offers/components/advert/adverts.component";
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from "@angular/common/http";
 import { ToggleButtonComponent } from './offers/components/toggle-button/toggle-button.component';
@@ -28,6 +29,17 @@ import {MatIconModule} from "@angular/material/icon";
 import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 
+import { NavbarComponent } from './offers/components/navbar/navbar.component';
+import { CreateAdvertComponent } from './offers/components/create-advert/create-advert.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CreateAdvertModalService } from './offers/service/create-advert-modal.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmDialogComponent } from './offers/components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +49,10 @@ import {MatDialogModule} from "@angular/material/dialog";
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
     CartDialogComponent
+    AdvertsComponent,
+    NavbarComponent,
+    CreateAdvertComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +65,24 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatDialogModule,
     MatIconModule,
     AdvertsRoutingModule
+    BrowserModule,
+    HttpClientModule,
+    AdvertsRoutingModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
+
   ],
   providers: [MessageService, ToggleService],
+  providers: [
+      CreateAdvertModalService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
