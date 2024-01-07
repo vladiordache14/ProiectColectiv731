@@ -9,7 +9,7 @@ import { User } from 'src/app/model/user';
   templateUrl: './modificare-cont.component.html',
   styleUrls: ['./modificare-cont.component.css'],
 })
-export class ModificareContComponent implements OnDestroy {
+export class ModificareContComponent implements OnInit, OnDestroy {
   displayDialog: boolean = false;
   email: string = '';
   address: string = '';
@@ -35,8 +35,11 @@ export class ModificareContComponent implements OnDestroy {
         this.getUserDetails();
       });
 
-   
+
   }
+  ngOnInit(): void {
+    this.messages = [];
+    }
 
   checkEmail() {
     this.emailInvalid = false;

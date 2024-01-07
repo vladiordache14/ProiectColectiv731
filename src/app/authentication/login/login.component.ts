@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
-import { SignupService } from '../services/signup.service';
+import { LoginService } from '../services/login.service';
 import { User } from 'src/app/model/user';
 import { MessageService } from 'primeng/api';
 import { Subject, takeUntil } from 'rxjs';
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   @Input() dialogState: boolean = false;
 
-  public signupService = inject(SignupService);
+  public signupService = inject(LoginService);
   private messageService = inject(MessageService);
   private subscriptionEnd = new Subject();
 
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   public messages: any[] = []; // Array to store messages
 
   ngOnInit(): void {
+    this.messages = [];
     this.signupService.openLoginModal
       .pipe(takeUntil(this.subscriptionEnd))
       .subscribe((value) => {

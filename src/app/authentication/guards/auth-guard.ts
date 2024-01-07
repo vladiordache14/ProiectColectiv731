@@ -1,11 +1,11 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { SignupService } from '../services/signup.service';
+import { LoginService } from '../services/login.service';
 import { filter, takeUntil, takeWhile } from 'rxjs';
 
 export function AuthGuard(intialRoute: string): CanActivateFn {
   return () => {
-    const signupService = inject(SignupService);
+    const signupService = inject(LoginService);
     const router: Router = inject(Router);
     if (signupService.isAuthenticated()) {
       return true;
