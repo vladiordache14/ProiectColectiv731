@@ -27,19 +27,18 @@ import {AdvertsModule} from "./offers/module/adverts.module";
 import {MatIconModule} from "@angular/material/icon";
 import { CartDialogComponent } from './cart-dialog/components/cart-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+
 import { ModificareContModule } from './modificare-cont/modificare-cont.module';
 
 import {AuthenticationModule} from "./authentication/authentication.module";
 
 
-import {LogoutButtonComponent} from "./offers/components/logout-button/logout-button.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     AdvertsComponent,
     ToggleButtonComponent,
-    LogoutButtonComponent,
     PageTwoComponent,
     ModifyAndDeactivateButtonsComponent,
     CartDialogComponent
@@ -51,9 +50,6 @@ import {LogoutButtonComponent} from "./offers/components/logout-button/logout-bu
     BrowserAnimationsModule,
     First_pageModule,
     AdvertsModule,
-    RouterModule,
-    DialogModule,
-    ButtonModule,
     RouterModule,
     MatDialogModule,
     MatIconModule,

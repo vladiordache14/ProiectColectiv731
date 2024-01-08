@@ -9,10 +9,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   template: `
   <body>
     <div>
-      <app-logout-button></app-logout-button>
-
       <app-toggle-button></app-toggle-button>
-
       <!-- Makes the string it recives from page-one to be the actual HTML of this page -->
       <div [innerHTML]="htmlContent"></div>
     </div>

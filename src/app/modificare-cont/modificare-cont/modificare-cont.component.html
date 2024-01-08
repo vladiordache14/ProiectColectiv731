@@ -1,0 +1,72 @@
+<p-dialog header="Update your account" [(visible)]="displayDialog" [modal]="true" [style]="{ width: '50%', 'text-align': 'left' }">
+
+
+
+  <p-messages [(value)]="messages"></p-messages>
+
+  <table>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="role">Role:</label></td>
+        <td><input type="text" id="role" [(ngModel)]="role" pInputText class="form-control" disabled="true"/>
+        </td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="username">You current Username:</label></td>
+        <td><input type="text" id="username" [(ngModel)]="username" pInputText class="form-control" disabled="true"/>
+
+        </td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" id="password" [(ngModel)]="password" pPassword class="form-control" />
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="email">*Email:</label></td>
+        <td><input type="email" id="email" [(ngModel)]="email" pInputText class="form-control" (input)="checkEmail()" />
+          <div *ngIf="emailInvalid" class="error-message">
+            required form: "&#64;"+domain name+".com"
+          </div></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="address">Address:</label></td>
+        <td><input type="text" id="address" [(ngModel)]="address" pInputText class="form-control" (input)="checkAddress()" />
+          <div *ngIf="addressInvalid" class="error-message">
+            max 100 characters
+          </div></td>
+      </div>
+    </tr>
+
+    <tr>
+      <div class="form-group">
+        <td><label for="phoneNumber">Phone number:</label></td>
+        <td><input type="tel" id="phoneNumber" [(ngModel)]="phone" pInputText class="form-control" (input)="checkPhone()" />
+          <div *ngIf="phoneInvalid" class="error-message">
+            10 characters, only numbers
+          </div></td>
+      </div>
+    </tr>
+    <tr>
+      <td class="mandatory">* mandatory</td>
+    </tr>
+  </table>
+
+  <p-footer>
+    <button pButton type="button" label="Save" (click)="saveUser()" class="p-button-primary" [disabled]="!fieldsValid()"></button>
+    <button pButton type="button" label="Cancel" (click)="modificareContService.CloseModificareCont()" class="p-button-secondary"></button>
+  </p-footer>
+
+</p-dialog>
