@@ -1,7 +1,7 @@
 //This is the toggle-button that switches between pages
 
 import { Component } from '@angular/core';
-import { ToggleService } from '../../service/toggle.service'; 
+import { ToggleService } from '../../service/toggle.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -33,10 +33,10 @@ export class ToggleButtonComponent {
       this.isToggled = value;
     })
     if (!this.isToggled) {
-      this.router.navigate(['/page-two']);
+      this.router.navigate(['adverts/page-two']);
     } else {
-      this.router.navigate(['/page-one']);
-    } 
+      this.router.navigate(['adverts/page-one']);
+    }
   }
 
   toggleButton() {
