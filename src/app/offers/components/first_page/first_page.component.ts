@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import {User} from "../../../model/user";
-import {SignupService} from "./signup.service";
 import {Router} from "@angular/router";
-
+import { ModificareContService } from 'src/app/modificare-cont/services/modificare-cont.service';
+import {SignupService} from "./signup.service";
+import {LoginService} from "../../../authentication/services/login.service";
+import {takeUntil, takeWhile} from "rxjs";
 
 @Component({
   selector: 'app-first_page',
   templateUrl: './first_page.component.html',
-  styleUrls: ['./first_page.component.css']
+  styleUrls: ['./first_page.component.css'],
 })
 export class First_pageComponent {
 
@@ -31,7 +33,7 @@ export class First_pageComponent {
   addressInvalid: boolean = false;
   phoneInvalid: boolean = false;
 
-  constructor(private messageService: MessageService, private signupService: SignupService, private router:Router) {
+  constructor(private messageService: MessageService, private signupService: SignupService, private router:Router, private modificareContService : ModificareContService, private authService : LoginService ) {
   }
 
   checkUsername() {
@@ -148,7 +150,20 @@ export class First_pageComponent {
     return true;
   }
   logInPopup() {
-    this.displayDialog = true;
+    if( !this.authService.authenticationState.value) {
+      this.authService.openLoginModal.next(true)
+      this.authService.authenticationState.pipe(takeWhile(value => !value, true)).subscribe(value => {
+        if (value) {
+          this.authService.openLoginModal.next(false);
+          this.router.navigate(['/adverts']);
+        }
+      })
+    }
+    else
+    {
+      this.router.navigate(['/adverts']);
+    }
+
   }
 
   hideDialog() {
@@ -173,4 +188,14 @@ export class First_pageComponent {
     );
   }
 
+  public updateCont() {
+    if (localStorage.getItem('isUserAuthenticated') === 'true') {
+      this.modificareContService.OpenModificareCont();
+    } else {
+      this.authService.redirectToUpdateAccount.next(true);
+      this.authService.openLoginModal.next(true);
+    }
+  }
+
 }
+
