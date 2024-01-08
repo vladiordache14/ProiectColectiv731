@@ -11,7 +11,7 @@
     <table>
       <tr>
         <div class="form-group">
-          <td><label for="username">*Username:</label></td>
+          <td><label for="username1">*Username:</label></td>
           <td><input type="text" id="username1" [(ngModel)]="username" pInputText class="form-control" (input)="checkUsername()" />
             <div *ngIf="usernameInvalid" class="error-message">
               max 30 characters
@@ -22,7 +22,7 @@
 
       <tr>
         <div class="form-group">
-          <td><label for="password">*Password:</label></td>
+          <td><label for="password1">*Password:</label></td>
           <td><input type="password" id="password1" [(ngModel)]="password" pPassword class="form-control" (input)="checkPassword()" />
             <div *ngIf="passwordInvalid" class="error-message">
               min 1 Uppercase, min 1 Lowercase, min 1 number, max 30 characters
